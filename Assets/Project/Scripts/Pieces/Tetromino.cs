@@ -1,4 +1,5 @@
 using System;
+using Project.Scripts.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,32 +13,24 @@ namespace Project.Scripts.Pieces
 
         public static int height = 20;
         public static int width = 10;
-
         public Vector3 rotationPoint; 
       
-        private static Transform[,] grid = new Transform[width, height]; //Jagged analizar
+        private static Transform[,] grid = new Transform[width, height];
         public static int score;
         public static int levelDifficulty;
         private int rotationState = 0;
         private void Update()
         {
-            if (Keyboard.current.leftArrowKey.wasPressedThisFrame)
-            {
-                transform.position += Vector3.left; 
-                if (!IsWithin())
-                {
-                    transform.position -= Vector3.left; 
-                }
-            }
-            if (Keyboard.current.rightArrowKey.wasPressedThisFrame)
-            {
-                transform.position += Vector3.right; 
-                if (!IsWithin())
-                {
-                    transform.position -= Vector3.right; 
-                }
-            }
+            
+            HandleHorizontalMovement();
+            HandleFallTime();
+            RotateTetromino();
+            IncrementLevel();
+            IncrementDifficulty(); 
+        }
 
+        private void HandleFallTime()
+        {
             if (Time.time - previousTIme > (Keyboard.current.downArrowKey.isPressed ? fallTime / 20f : fallTime))
             {
                 transform.position += Vector3.down;
@@ -51,13 +44,26 @@ namespace Project.Scripts.Pieces
                 }
                 previousTIme = Time.time;
             }
+        }
 
-            if (Keyboard.current.upArrowKey.wasPressedThisFrame)
+        private void HandleHorizontalMovement()
+        {
+            if (InputManager.Instance.IsDragging && InputManager.Instance.DragDelta != Vector2.zero)
             {
-               RotateTetromino();
+                float deltaX = InputManager.Instance.DragDelta.x;
+
+                if (Mathf.Abs(deltaX) > 0.01f) 
+                {
+                    Vector3 dir = deltaX > 0 ? Vector3.right : Vector3.left;
+
+                    transform.position += dir * (moveSpeed * Time.deltaTime);
+
+                    if (!IsWithin())
+                    {
+                        transform.position -= dir * (moveSpeed * Time.deltaTime);
+                    }
+                }
             }
-            IncrementLevel();
-            IncrementDifficulty(); 
         }
 
         private void CheckLines()
@@ -131,13 +137,16 @@ namespace Project.Scripts.Pieces
 
         private void RotateTetromino()
         {
-            rotationState = (rotationState + 1) % 4;
-            
-            transform.RotateAround(transform.TransformPoint(rotationPoint), Vector3.forward, -90);
-            if (!IsWithin())
+            if (Keyboard.current.upArrowKey.wasPressedThisFrame)
             {
-                transform.RotateAround(transform.TransformPoint(rotationPoint), Vector3.forward, 90);
-                rotationState = (rotationState + 3) % 4;
+                rotationState = (rotationState + 1) % 4;
+            
+                transform.RotateAround(transform.TransformPoint(rotationPoint), Vector3.forward, -90);
+                if (!IsWithin())
+                {
+                    transform.RotateAround(transform.TransformPoint(rotationPoint), Vector3.forward, 90);
+                    rotationState = (rotationState + 3) % 4;
+                }
             }
         }
 

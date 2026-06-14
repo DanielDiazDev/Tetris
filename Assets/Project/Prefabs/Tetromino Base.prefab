@@ -231,8 +231,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Project.Scripts.Pieces.Tetromino
   fallTime: 0.8
+  moveSpeed: 8
+  moveRepeatDelay: 0.15
   rotationPoint: {x: 0, y: 0, z: 0}
-  tetrominoGenerator: {fileID: 0}
 --- !u!1 &4388662634470533293
 GameObject:
   m_ObjectHideFlags: 0
