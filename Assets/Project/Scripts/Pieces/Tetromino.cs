@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Project.Scripts.Core;
 using Project.Scripts.Input;
 using Project.Scripts.UI.PlayerControllerButtons;
 using UnityEngine;
@@ -11,14 +12,7 @@ namespace Project.Scripts.Pieces
     {
         private float previousTIme;
         public float fallTime = 0.8f;
-
-        public static int height = 20;
-        public static int width = 10;
         public Vector3 rotationPoint; 
-      
-        private static Transform[,] grid = new Transform[width, height];
-        public static int score;
-        public static int levelDifficulty;
         private int rotationState = 0;
         private bool isSoftDropping;
         
@@ -32,27 +26,12 @@ namespace Project.Scripts.Pieces
             FindAnyObjectByType<RotateButton>().OnRotateButtonPressed += RotateTetromino;
             
         }
-
-        
-
-        private void OnDestroy()
-        {
-            foreach (var moveButton in FindObjectsByType<HorizontalMoveButton>())
-            {
-                moveButton.OnHorizontalMoveButtonPressed -= MoveHorizontal;
-            }
-            FindAnyObjectByType<SoftDropButton>().OnSoftDropButtonPressed -= SetSoftDropping;
-            FindAnyObjectByType<RotateButton>().OnRotateButtonPressed -= RotateTetromino;
-            
-        }
-
         private void Update()
         {
             
             HandleFallTime();
-           // RotateTetromino();
-            IncrementLevel();
-            IncrementDifficulty(); 
+            //IncrementLevel();
+         //   IncrementDifficulty(); 
         }
 
         private void HandleFallTime()
@@ -63,73 +42,27 @@ namespace Project.Scripts.Pieces
                 if (!IsWithin())
                 {
                     transform.position -= Vector3.down;
-                    AddToGrid();
-                    CheckLines();
-                    FindAnyObjectByType<TetrominoGenerator>().Generate(); //Revisar para que pare
+                    GameBootstrap.Instance.AddToGrid(transform);
+                    GameBootstrap.Instance.CheckLines();
+                    foreach (var moveButton in FindObjectsByType<HorizontalMoveButton>())
+                    {
+                        moveButton.OnHorizontalMoveButtonPressed -= MoveHorizontal;
+                    }
+                    FindAnyObjectByType<SoftDropButton>().OnSoftDropButtonPressed -= SetSoftDropping;
+                    FindAnyObjectByType<RotateButton>().OnRotateButtonPressed -= RotateTetromino;
+                    GameBootstrap.Instance.Generate();
                     enabled = false;
                 }
                 previousTIme = Time.time;
             }
         }
 
-        public void MoveHorizontal(Vector3 direction)
+        private void MoveHorizontal(Vector3 direction)
         {
             transform.position += direction;
             if (!IsWithin())
             {
                 transform.position -= direction;
-            }
-        }
-
-
-        private void CheckLines()
-        {
-            for (int i = height - 1; i >= 0; i--)
-            {
-                if (HaveLine(i))
-                {
-                    ClearLine(i);
-                    DownLine(i);
-                }
-            }
-        }
-
-        private bool HaveLine(int i)
-        {
-            for (int j = 0; j < width; j++)
-            {
-                if (grid[j, i] == null)
-                {
-                    return false;
-                }
-            }
-
-            score += 100;
-            return true;
-        }
-
-        private void ClearLine(int i)
-        {
-            for (int j = 0; j < width; j++)
-            {
-                Destroy(grid[j, i].gameObject);
-                grid[j, i] = null;  
-            }
-        }
-
-        private void DownLine(int i)
-        {
-            for (int y = i; y < height; y++)
-            {
-                for (int j = 0; j < width; j++)
-                {
-                    if (grid[j, y] != null)
-                    {
-                        grid[j, y - 1] = grid[j, y];
-                        grid[j, y] = null;
-                        grid[j, y -1].position += Vector3.down;
-                    }
-                }
             }
         }
         private bool IsWithin()
@@ -138,12 +71,12 @@ namespace Project.Scripts.Pieces
             {
                 int x = Mathf.RoundToInt(child.position.x);
                 int y = Mathf.RoundToInt(child.position.y);
-                if (x < 0 || x >= width || y < 0 || y >= height)
+                if (x < 0 || x >= GameBootstrap.width || y < 0 || y >= GameBootstrap.height)
                 {
                     return false;
                 }
 
-                if (grid[x, y] != null)
+                if (GameBootstrap.grid[x, y] != null)
                 {
                     return false;
                 }
@@ -163,53 +96,10 @@ namespace Project.Scripts.Pieces
                 }
         }
 
-        private void AddToGrid()
-        {
-            foreach (Transform child in transform)
-            {
-                int x = Mathf.RoundToInt(child.position.x);
-                int y = Mathf.RoundToInt(child.position.y);
-                
-                grid[x, y] = child;
-
-                if (y >= 19)
-                {
-                    levelDifficulty = 0;
-                    score = 0;
-                    fallTime = 0.8f;
-                    Debug.Log("GameOver");
-                }
-            }
-        }
         private void SetSoftDropping(bool isDropping)
         {
             isSoftDropping = isDropping;
         }
-        private void IncrementLevel()
-        {
-            switch (score)
-            {
-                case 200:
-                    levelDifficulty++;
-                    break;
-                case 400:
-                    levelDifficulty++;
-                    break;
-                
-            }
-        }
-
-        private void IncrementDifficulty()
-        {
-            switch (levelDifficulty)
-            {
-                case 1:
-                    fallTime = 0.4f;
-                    break;
-                case 2:
-                    fallTime = 0.2f;
-                    break;
-            }
-        }
+       
     }
 }
