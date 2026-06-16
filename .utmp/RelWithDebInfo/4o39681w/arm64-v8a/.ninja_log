@@ -1,0 +1,12 @@
+# ninja log v5
+135	1172	8031997738279338	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	a5e273f7537a7078
+1175	4215	8031997764643373	D:/OtrosJuegos/Tetris/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/4o39681w/obj/arm64-v8a/libswappywrapper.so	f20e18b59bc4a4e8
+40	4956	8031997776063854	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	41efea2d665d189b
+77	4992	8031997776437662	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	e7e3243ae241af79
+16	5042	8031997776923589	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	3fa25250a098b3e9
+119	5067	8031997777159568	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	38d6a10ad3da079c
+28	5201	8031997778579689	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	ad3dfe1742e0e57e
+100	5365	8031997780198667	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	6f0f10d947fd7f31
+58	5592	8031997782479031	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	3592c6dbaac854e2
+1	5796	8031997784515825	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	96f757546c4f7663
+5796	6055	8031997787080076	D:/OtrosJuegos/Tetris/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/4o39681w/obj/arm64-v8a/libgame.so	57afa44dea3fdebd

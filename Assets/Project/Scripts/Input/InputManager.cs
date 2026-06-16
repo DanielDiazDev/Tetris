@@ -11,6 +11,8 @@ namespace Project.Scripts.Input
 
         public Vector2 DragDelta { get; private set; }
         public bool IsDragging { get; private set; }
+        public event Action OnTap;
+        private Vector2 lastPointerPos;
         private void OnEnable()
         {
             var playerInput = GetComponent<PlayerInput>();
@@ -33,11 +35,16 @@ namespace Project.Scripts.Input
         private void OnPress(InputAction.CallbackContext ctx)
         {
             IsDragging = true;
+           // lastPointerPos = ctx.ReadValue<Vector2>();
             DragDelta = Vector2.zero;
         }
 
         private void OnRelease(InputAction.CallbackContext ctx)
         {
+            if (DragDelta == Vector2.zero)
+            {
+                OnTap?.Invoke();
+            }
             IsDragging = false;
             DragDelta = Vector2.zero;
         }
@@ -45,7 +52,14 @@ namespace Project.Scripts.Input
         private void OnPointerMove(InputAction.CallbackContext ctx)
         {
             if (!IsDragging) return;
-            DragDelta = ctx.ReadValue<Vector2>();
+            Vector2 currentPos = ctx.ReadValue<Vector2>();
+            DragDelta = currentPos - lastPointerPos; 
+            lastPointerPos = currentPos;
+        }
+
+        public void DragToZero()
+        {
+            DragDelta = Vector2.zero;
         }
     }
 }

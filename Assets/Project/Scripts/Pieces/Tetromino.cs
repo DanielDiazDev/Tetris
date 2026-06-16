@@ -1,5 +1,7 @@
 using System;
+using System.Linq;
 using Project.Scripts.Input;
+using Project.Scripts.UI.PlayerControllerButtons;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,7 +11,6 @@ namespace Project.Scripts.Pieces
     {
         private float previousTIme;
         public float fallTime = 0.8f;
-        public float moveSpeed = 0.8f;
 
         public static int height = 20;
         public static int width = 10;
@@ -19,19 +20,44 @@ namespace Project.Scripts.Pieces
         public static int score;
         public static int levelDifficulty;
         private int rotationState = 0;
+        private bool isSoftDropping;
+        
+        private void OnEnable()
+        {
+            foreach (var moveButton in FindObjectsByType<HorizontalMoveButton>())
+            {
+                moveButton.OnHorizontalMoveButtonPressed += MoveHorizontal;
+            }
+            FindAnyObjectByType<SoftDropButton>().OnSoftDropButtonPressed += SetSoftDropping;
+            FindAnyObjectByType<RotateButton>().OnRotateButtonPressed += RotateTetromino;
+            
+        }
+
+        
+
+        private void OnDestroy()
+        {
+            foreach (var moveButton in FindObjectsByType<HorizontalMoveButton>())
+            {
+                moveButton.OnHorizontalMoveButtonPressed -= MoveHorizontal;
+            }
+            FindAnyObjectByType<SoftDropButton>().OnSoftDropButtonPressed -= SetSoftDropping;
+            FindAnyObjectByType<RotateButton>().OnRotateButtonPressed -= RotateTetromino;
+            
+        }
+
         private void Update()
         {
             
-            HandleHorizontalMovement();
             HandleFallTime();
-            RotateTetromino();
+           // RotateTetromino();
             IncrementLevel();
             IncrementDifficulty(); 
         }
 
         private void HandleFallTime()
         {
-            if (Time.time - previousTIme > (Keyboard.current.downArrowKey.isPressed ? fallTime / 20f : fallTime))
+            if (Time.time - previousTIme > (isSoftDropping ? fallTime / 20f : fallTime))
             {
                 transform.position += Vector3.down;
                 if (!IsWithin())
@@ -46,25 +72,15 @@ namespace Project.Scripts.Pieces
             }
         }
 
-        private void HandleHorizontalMovement()
+        public void MoveHorizontal(Vector3 direction)
         {
-            if (InputManager.Instance.IsDragging && InputManager.Instance.DragDelta != Vector2.zero)
+            transform.position += direction;
+            if (!IsWithin())
             {
-                float deltaX = InputManager.Instance.DragDelta.x;
-
-                if (Mathf.Abs(deltaX) > 0.01f) 
-                {
-                    Vector3 dir = deltaX > 0 ? Vector3.right : Vector3.left;
-
-                    transform.position += dir * (moveSpeed * Time.deltaTime);
-
-                    if (!IsWithin())
-                    {
-                        transform.position -= dir * (moveSpeed * Time.deltaTime);
-                    }
-                }
+                transform.position -= direction;
             }
         }
+
 
         private void CheckLines()
         {
@@ -137,9 +153,7 @@ namespace Project.Scripts.Pieces
 
         private void RotateTetromino()
         {
-            if (Keyboard.current.upArrowKey.wasPressedThisFrame)
-            {
-                rotationState = (rotationState + 1) % 4;
+            rotationState = (rotationState + 1) % 4;
             
                 transform.RotateAround(transform.TransformPoint(rotationPoint), Vector3.forward, -90);
                 if (!IsWithin())
@@ -147,7 +161,6 @@ namespace Project.Scripts.Pieces
                     transform.RotateAround(transform.TransformPoint(rotationPoint), Vector3.forward, 90);
                     rotationState = (rotationState + 3) % 4;
                 }
-            }
         }
 
         private void AddToGrid()
@@ -168,7 +181,10 @@ namespace Project.Scripts.Pieces
                 }
             }
         }
-
+        private void SetSoftDropping(bool isDropping)
+        {
+            isSoftDropping = isDropping;
+        }
         private void IncrementLevel()
         {
             switch (score)
