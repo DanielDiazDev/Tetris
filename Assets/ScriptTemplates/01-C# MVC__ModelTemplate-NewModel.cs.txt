@@ -1,0 +1,6 @@
+using _Project.Scripts.MVC;
+
+public class #SCRIPTNAME#Model : BaseModel
+{
+    // Add your data properties here
+}

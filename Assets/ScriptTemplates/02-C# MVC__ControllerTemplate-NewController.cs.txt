@@ -1,0 +1,14 @@
+using _Project.Scripts.MVC;
+public class #SCRIPTNAME#Controller : BaseController<#SCRIPTNAME#Model, #SCRIPTNAME#View>
+{
+    public #SCRIPTNAME#Controller(#SCRIPTNAME#View view, #SCRIPTNAME#Model model) : base(view, model)
+    {
+        // Subscribe to events here
+    }
+
+
+    ~#SCRIPTNAME#Controller()
+    {
+        // Unsubscribe to events here
+    }
+}                             

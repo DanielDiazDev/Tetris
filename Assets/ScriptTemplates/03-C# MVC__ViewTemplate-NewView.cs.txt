@@ -1,0 +1,22 @@
+using _Project.Scripts.MVC;
+public class #SCRIPTNAME#View : GeneralView<#SCRIPTNAME#Model, #SCRIPTNAME#Controller>
+{
+         protected override void Initialize()
+         {
+            if (controller == null)
+            {
+               controller = new #SCRIPTNAME#Controller(this, GetComponent<#SCRIPTNAME#Model>());
+            }
+            base.Initialize();
+        }
+        
+        protected override void ShowView()
+        {
+            base.ShowView();    
+        }
+        
+        protected override void HideView()
+        {
+            base.HideView();    
+        }
+}
