@@ -1,35 +1,82 @@
-using System;
+using _Project.Scripts.SOAP.Events;
 using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine;
 
-public class PlayFabLogin : MonoBehaviour
+namespace _Project.Scripts.PlayFab
 {
-    private void Start()
+    public class PlayFabLogin : MonoBehaviour
     {
-        if (string.IsNullOrEmpty(PlayFabSettings.staticSettings.TitleId)){
-            /*
+    
+        [SerializeField] private GameObject namePanel;
+        [SerializeField] private StringEvent saveNameEvent;
+
+        private void OnEnable()
+        {
+            saveNameEvent.Subscribe(SaveName);
+        }
+
+        private void OnDestroy()
+        {
+            saveNameEvent.Unsubscribe(SaveName);
+        }
+
+        private void Start()
+        {
+            if (string.IsNullOrEmpty(PlayFabSettings.staticSettings.TitleId))
+            {
+                /*
             Please change the titleId below to your own titleId from PlayFab Game Manager.
             If you have already set the value in the Editor Extensions, this can be skipped.
             */
-            PlayFabSettings.staticSettings.TitleId = "42";
-        }
-        var request = new LoginWithCustomIDRequest()
-        {
-            CustomId = "GettingStartedGuide",
-            CreateAccount = true
-        };
-        PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginFailure);
-    }
+                PlayFabSettings.staticSettings.TitleId = "42";
+            }
 
-    private void OnLoginSuccess(LoginResult result)
-    {
-        Debug.Log("Congratulations, you made your first successful API call!");
-    }
-    private void OnLoginFailure(PlayFabError error)
-    {
-        Debug.LogWarning("Something went wrong with your first API call.  :(");
-        Debug.LogError("Here's some debug information:");
-        Debug.LogError(error.GenerateErrorReport());
+            var request = new LoginWithCustomIDRequest()
+            {
+                CustomId = SystemInfo.deviceUniqueIdentifier,
+                CreateAccount = true,
+                InfoRequestParameters = new GetPlayerCombinedInfoRequestParams()
+                {
+                    GetPlayerProfile = true
+                }
+            };
+            PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginFailure);
+        }
+
+        private void OnLoginSuccess(LoginResult result)
+        {
+            string displayName = result.InfoResultPayload?.PlayerProfile?.DisplayName;
+
+            if (string.IsNullOrEmpty(displayName))
+            {
+                namePanel.SetActive(true);
+            }
+            else
+            {
+                PlayerData.DisplayName = displayName;
+                Debug.Log("Jugador logueado: " + result.InfoResultPayload.PlayerProfile.DisplayName);
+            }
+        }
+
+        private void SaveName(string username)
+        {
+        
+            var request = new UpdateUserTitleDisplayNameRequest()
+            {
+                DisplayName = username,
+            };
+            PlayFabClientAPI.UpdateUserTitleDisplayName(request,
+                r =>
+                {
+                    PlayerData.DisplayName = r.DisplayName;
+                },
+                e => { Debug.LogError(e.GenerateErrorReport()); });
+        }
+
+        private void OnLoginFailure(PlayFabError error)
+        {
+            Debug.LogError(error.GenerateErrorReport());
+        }
     }
 }

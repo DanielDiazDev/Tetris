@@ -1,4 +1,5 @@
 ﻿using System;
+using _Project.Scripts.PlayFab;
 using _Project.Scripts.Score;
 using _Project.Scripts.SOAP.Events;
 using Project.Scripts.Pieces;
@@ -8,7 +9,6 @@ namespace Project.Scripts.Core
 {
     public class GameBootstrap : MonoBehaviour
     {
-        //public static GameBootstrap Instance {get; private set;}
         [SerializeField] private int addScore = 100;
         public static int height = 20;
         public static int width = 10;
@@ -26,8 +26,8 @@ namespace Project.Scripts.Core
 
         private void Awake()
         {
-           // Instance = this;
            ResetGame();
+           Debug.Log(PlayerData.DisplayName);
         }
         private void OnEnable()
         {
@@ -135,8 +135,6 @@ namespace Project.Scripts.Core
         private void ResetGame()
         {
              LevelSystem.Instance.ResetLevel();
-             //ScoreSystem.Instance.ResetScore();
-            // setFallTimeEvent.Raise(0.8f);
         }
 
     }
