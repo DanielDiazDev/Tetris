@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class GameOverTest : MonoBehaviour
 {
-    public static GameOverTest Instance;
+    //public static GameOverTest Instance;
     [SerializeField] private GameObject gameOverPanel;
 
     private void Awake()
     {
-        Instance = this;
+     //   Instance = this;
     }
 
     public void ShowGameOver()

@@ -11,9 +11,6 @@ namespace _Project.Scripts.UI
     {
         [SerializeField] private TextMeshProUGUI finalScoreText;
         [SerializeField] private IntEvent finalScoreEvent;
-        [SerializeField] private Button resetButton;
-        [SerializeField] private Button exitButton;
-        [SerializeField] private Button saveFinalScoreButton;
         private int finalScore;
         private void OnEnable()
         {
@@ -27,9 +24,9 @@ namespace _Project.Scripts.UI
 
         private void Awake()
         {
-            resetButton.onClick.AddListener(() => SceneManager.LoadScene(SceneManager.GetActiveScene().name));
-            exitButton.onClick.AddListener(Application.Quit);
-            saveFinalScoreButton.onClick.AddListener(() => Debug.Log(finalScore));
+         //  resetButton.onClick.AddListener(() => SceneManager.LoadScene(SceneManager.GetActiveScene().name));
+          //  exitButton.onClick.AddListener(Application.Quit);
+          //  saveFinalScoreButton.onClick.AddListener(() => Debug.Log(finalScore));
         }
 
         private void SetFinalScore(int score)

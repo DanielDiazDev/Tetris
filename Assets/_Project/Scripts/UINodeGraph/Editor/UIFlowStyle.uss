@@ -1,0 +1,174 @@
+/* --- FONDO DEL GRAFO --- */
+GridBackground {
+    --grid-background-color: #181818;
+    --line-color: rgba(255, 255, 255, 0.03);
+    --thick-line-color: rgba(255, 255, 255, 0.07);
+    --spacing: 25;
+}
+
+/* --- ESTILO BASE DEL NODO --- */
+.ui-node #node-border {
+    background-color: rgba(32, 32, 32, 0.96);
+    border-radius: 10px;
+    border-width: 1.5px;
+    border-color: #121212;
+    /* Efecto de sombra sutil */
+    margin: 4px;
+}
+
+
+
+/* Borde de selección con resplandor */
+.ui-node:checked #selection-border {
+    border-color: #00A2FF;
+    border-width: 2px;
+    border-radius: 11px;
+}
+
+/* --- CABECERAS (HEADERS) --- */
+.ui-node #title {
+    height: 38px;
+    justify-content: center;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    padding-left: 8px;
+    /* Gradiente sutil para dar volumen */
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Colores Pro con Gradientes (Simulados con colores base sólidos pero elegantes) */
+.panel-node #title {
+    background-color: #2C5D87;
+    border-top-color: rgba(255, 255, 255, 0.1); /* Brillo superior */
+}
+
+.back-node #title {
+    background-color: #872C2C;
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.scene-node #title {
+    background-color: #2C874E;
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.quit-node #title {
+    background-color: #333333;
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+#title-label {
+    color: #E5E5E5;
+    font-size: 13px;
+    -unity-font-style: bold;
+    text-transform: uppercase; /* Se ve más profesional en mayúsculas */
+    letter-spacing: 1px;
+}
+
+/* --- CONTENEDOR DE DATOS (EXTENSION) --- */
+.ui-node #extension {
+    background-color: rgba(25, 25, 25, 0.8);
+    padding: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* Estilo para los campos dentro del nodo */
+.ui-node TextField, .ui-node ObjectField, .ui-node FloatField, .ui-node Toggle {
+    margin-bottom: 4px;
+    padding: 2px;
+    color: #B0B0B0;
+}
+
+/* --- PUERTOS (PORTS) --- */
+.port {
+    height: 26px;
+    padding: 4px 8px;
+    transition-property: background-color;
+    transition-duration: 0.2s;
+}
+
+.port:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Etiquetas de los puertos */
+.port > #type {
+    color: #888888;
+    font-size: 10px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+/* --- BADGE DE INITIAL (CHIP) --- */
+.initial-badge {
+    background-color: #27AE60;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 9px;
+    -unity-font-style: bold;
+    margin-right: 8px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* --- MINIMAP --- */
+MiniMap {
+    background-color: #151515;
+    border-color: #000000;
+    border-width: 1px;
+    border-radius: 8px;
+    opacity: 0.9;
+}
+
+/* --- TOOLBAR --- */
+Toolbar {
+    background-color: #121212;
+    height: 32px;
+    border-bottom-color: #000000;
+    padding: 4px;
+}
+
+ToolbarButton {
+    background-color: #2A2A2A;
+    border-color: #111111;
+    border-radius: 4px;
+    color: #C0C0C0;
+    font-size: 11px;
+    padding: 0 12px;
+}
+
+ToolbarButton:hover {
+    background-color: #3A3A3A;
+    color: #FFFFFF;
+}
+
+/* --- ESTADO INICIAL (EL NODO QUE ARRANCA) --- */
+
+/* Cambiamos el borde del nodo para que resalte */
+.ui-node.is-initial #node-border {
+    border-color: #27AE60; /* Verde brillante */
+    border-width: 2px;
+}
+
+/* Cambiamos el color del título solo para el nodo inicial */
+.ui-node.is-initial #title {
+    background-color: #1E8449; /* Verde oscuro elegante */
+    border-bottom-color: #2ECC71;
+}
+
+/* Estilo para el Badge "START NODE" */
+.initial-badge-label {
+    background-color: #2ECC71;
+    color: #05200C;
+    font-size: 9px;
+    -unity-font-style: bold;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 8px;
+    margin-left: 5px;
+    align-self: center;
+    text-transform: uppercase;
+}

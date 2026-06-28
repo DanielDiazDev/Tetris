@@ -2,6 +2,7 @@
 using _Project.Scripts.PlayFab;
 using _Project.Scripts.Score;
 using _Project.Scripts.SOAP.Events;
+using _Project.Scripts.UINodeGraph.Runtime;
 using Project.Scripts.Pieces;
 using UnityEngine;
 
@@ -54,7 +55,8 @@ namespace Project.Scripts.Core
                 if (y >= 19) 
                 {
                     isGameOver = true;
-                   GameOverTest.Instance.ShowGameOver();
+                    UINavigationManager.Instance.NavigateTo("9e392b27-fe0f-476a-975f-a5c2983282d9");
+                  //GameOverTest.Instance.ShowGameOver();
                    finalScoreEvent.Raise(ScoreSystem.Instance.GetScore());
                 }
             }

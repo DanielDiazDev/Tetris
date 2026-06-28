@@ -10,7 +10,7 @@ namespace _Project.Scripts.UI
 
         private void Awake()
         {
-            startButton.onClick.AddListener(() => SceneManager.LoadScene("Game"));
+            //startButton.onClick.AddListener(() => SceneManager.LoadScene("Game"));
         }
     }
 }
