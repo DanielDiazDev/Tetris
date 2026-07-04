@@ -1,125 +1,55 @@
-﻿using System;
-using _Project.Scripts.PlayFab;
+﻿using _Project.Scripts.Grid;
 using _Project.Scripts.Score;
 using _Project.Scripts.SOAP.Events;
 using _Project.Scripts.UINodeGraph.Runtime;
 using Project.Scripts.Pieces;
 using UnityEngine;
 
-namespace Project.Scripts.Core
+namespace _Project.Scripts.Core
 {
     public class GameBootstrap : MonoBehaviour
     {
-        [SerializeField] private int addScore = 100;
-        public static int height = 20;
-        public static int width = 10;
         [SerializeField] private TetrominoGenerator  tetrominoGenerator;
         [SerializeField] private IntEvent addScoreEvent;
         [SerializeField] private FloatEvent setFallTimeEvent;
-        [SerializeField] private VoidEvent generateTetrominoEvent;
-        [SerializeField] private TransformEvent addToGridEvent;
-        [SerializeField] private VoidEvent checkLinesEvent;
         [SerializeField] private IntEvent finalScoreEvent;
-        
+        [SerializeField] private ScoreModel scoreModel;
+       // [SerializeField] private LeaderboardModel leaderboardModel;
+        //private PlayFabLeaderboard leaderboard;
+        private IGridSystem gridSystem;
+        private IScoreSystem scoreSystem;
         private float fallTimeDecrement = 0.001f;
-        public static Transform[,] grid = new Transform[width, height];
-        private bool isGameOver;
-
+        
         private void Awake()
         {
            ResetGame();
-           Debug.Log(PlayerData.DisplayName);
+           gridSystem = new GridSystem(20, 10);
+           scoreSystem = new ScoreSystem(scoreModel);
+           tetrominoGenerator.Init(gridSystem);
         }
         private void OnEnable()
         {
-            generateTetrominoEvent.Subscribe(Generate);
-            addToGridEvent.Subscribe(AddToGrid);
-            checkLinesEvent.Subscribe(CheckLines);
+            gridSystem.OnGameOver += HandleGameOver;
+            gridSystem.OnAddScore += HandleScore;
+            gridSystem.OnCheckLevel += CheckLevelProgression;
         }
-
         private void OnDestroy()
         {
-            generateTetrominoEvent.Unsubscribe(Generate);
-            addToGridEvent.Unsubscribe(AddToGrid);
-            checkLinesEvent.Unsubscribe(CheckLines);
+            gridSystem.OnGameOver -= HandleGameOver;
+            gridSystem.OnAddScore -= HandleScore;
+            gridSystem.OnCheckLevel -= CheckLevelProgression;
         }
-        private void AddToGrid(Transform tetromino)
+        private void HandleGameOver()
         {
-            foreach (Transform child in tetromino)
-            {
-                int x = Mathf.RoundToInt(child.position.x);
-                int y = Mathf.RoundToInt(child.position.y);
-                
-                grid[x, y] = child;
+            tetrominoGenerator.Stop();
+            UINavigationManager.Instance.NavigateTo("9e392b27-fe0f-476a-975f-a5c2983282d9");
+            finalScoreEvent.Raise(scoreSystem.GetScore());
+        }
+        private void HandleScore(int score) => scoreSystem.AddScore(score);
 
-                if (y >= 19) 
-                {
-                    isGameOver = true;
-                    UINavigationManager.Instance.NavigateTo("9e392b27-fe0f-476a-975f-a5c2983282d9");
-                  //GameOverTest.Instance.ShowGameOver();
-                   finalScoreEvent.Raise(ScoreSystem.Instance.GetScore());
-                }
-            }
-        }
-        
-        private void CheckLines(Unit _)
-        {
-            for (int i = height - 1; i >= 0; i--)
-            {
-                if (HaveLine(i))
-                {
-                    ClearLine(i);
-                    DownLine(i);
-                }
-            }
-        }
-        private bool HaveLine(int i)
-        {
-            for (int j = 0; j < width; j++)
-            {
-                if (grid[j, i] == null)
-                {
-                    return false;
-                }
-            }
-            ScoreSystem.Instance.AddScore(addScore);
-            CheckLevelProgression();
-            return true;
-        }
-
-        private void ClearLine(int i)
-        {
-            for (int j = 0; j < width; j++)
-            {
-                Destroy(grid[j, i].gameObject);
-                grid[j, i] = null;  
-            }
-        }
-       
-        private void DownLine(int i)
-        {
-            for (int y = i; y < height; y++)
-            {
-                for (int j = 0; j < width; j++)
-                {
-                    if (grid[j, y] != null)
-                    {
-                        grid[j, y - 1] = grid[j, y];
-                        grid[j, y] = null;
-                        grid[j, y -1].position += Vector3.down;
-                    }
-                }
-            }
-        }
-
-        private void Generate(Unit _)
-        {
-            if(isGameOver) return;
-            tetrominoGenerator.Generate();
-        }
         private void CheckLevelProgression()
         {
-            int currentScore = ScoreSystem.Instance.GetScore();
+            int currentScore = scoreSystem.GetScore();
             int threshold = 200;
 
             if (currentScore >= (LevelSystem.Instance.Level + 1) * threshold)
@@ -138,6 +68,5 @@ namespace Project.Scripts.Core
         {
              LevelSystem.Instance.ResetLevel();
         }
-
     }
 }

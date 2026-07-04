@@ -1,4 +1,5 @@
 ﻿using System;
+using _Project.Scripts.Auth;
 using _Project.Scripts.SOAP.Events;
 using TMPro;
 using UnityEngine;
@@ -11,7 +12,10 @@ namespace _Project.Scripts.UI
     {
         [SerializeField] private TextMeshProUGUI finalScoreText;
         [SerializeField] private IntEvent finalScoreEvent;
+        [SerializeField] private Button saveFinalScoreButton;
         private int finalScore;
+        private PlayFabLeaderboard leaderboard;
+
         private void OnEnable()
         {
             finalScoreEvent.Subscribe(SetFinalScore);
@@ -26,8 +30,14 @@ namespace _Project.Scripts.UI
         {
          //  resetButton.onClick.AddListener(() => SceneManager.LoadScene(SceneManager.GetActiveScene().name));
           //  exitButton.onClick.AddListener(Application.Quit);
-          //  saveFinalScoreButton.onClick.AddListener(() => Debug.Log(finalScore));
+          //  saveFinalScoreButton.onClick.AddListener(() => leaderboard.UpdatePlayerStatics("Leaderboard", finalScore));
+            saveFinalScoreButton.onClick.AddListener(() => PlayFabLeaderboard.Instance.UpdatePlayerStatics("Leaderboard", finalScore));
         }
+
+        // public void Init(PlayFabLeaderboard leaderboard)
+        // {
+        //     this.leaderboard = leaderboard;
+        // }
 
         private void SetFinalScore(int score)
         {

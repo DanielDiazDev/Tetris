@@ -23,7 +23,7 @@ namespace _Project.Scripts.Score
 
         public void ResetLevel()
         {
-            Level = 0;
+            Level = 1;
             setLevelEvent.Raise(Level);
         }
     }

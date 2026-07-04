@@ -234,9 +234,7 @@ MonoBehaviour:
   rotationPoint: {x: 0, y: 0, z: 0}
   sprite: {fileID: 0}
   setFallTimeEvent: {fileID: 11400000, guid: a840488c00ac9e54498c1a2fc11e958b, type: 2}
-  addToGridEvent: {fileID: 11400000, guid: 3207417f4cd385540b4a3e935ae3347d, type: 2}
-  checkLinesEvent: {fileID: 11400000, guid: 0427ed8563fa9234b941d700c8317879, type: 2}
-  generateTetrominoEvent: {fileID: 11400000, guid: e063c21a93c93264eaad62eebcc39324, type: 2}
+  tetrominoLockedEvent: {fileID: 11400000, guid: dc8f5b0813be36045a5f7448afef3e2c, type: 2}
 --- !u!1 &4388662634470533293
 GameObject:
   m_ObjectHideFlags: 0

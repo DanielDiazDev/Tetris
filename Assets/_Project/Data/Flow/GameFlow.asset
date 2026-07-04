@@ -14,28 +14,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.UINodeGraph.Runtime.UIFlowAsset
   initialNodeGuid: 1c8bbf28-5096-4268-a06e-aace59eca29e
   nodes:
-  - rid: 5450877926747406421
-  - rid: 5450877926747406422
+  - rid: 872592266763436032
+  - rid: 872592266763436033
+  - rid: 872592266763436034
   edges:
   - baseNodeGuid: 9e392b27-fe0f-476a-975f-a5c2983282d9
     portName: ResetButton
     targetNodeGuid: 18b9a7a7-def9-43ea-8de0-d26d543d2cbe
     transition:
       rid: 5450877926747406420
+  - baseNodeGuid: 9e392b27-fe0f-476a-975f-a5c2983282d9
+    portName: SaveScoreButton
+    targetNodeGuid: 83c88f37-c09d-488b-8ea1-749e032a8540
+    transition:
+      rid: 872592258644574285
+  - baseNodeGuid: 83c88f37-c09d-488b-8ea1-749e032a8540
+    portName: ResetButton
+    targetNodeGuid: 18b9a7a7-def9-43ea-8de0-d26d543d2cbe
+    transition:
+      rid: 872592266763436035
   references:
     version: 2
     RefIds:
-    - rid: 5450877926747406420
+    - rid: 872592258644574285
       type: {class: FadeTransition, ns: _Project.Scripts.UINodeGraph.Runtime.Transitions, asm: Assembly-CSharp}
       data:
         duration: 0.3
-    - rid: 5450877926747406421
-      type: {class: SceneNodeData, ns: _Project.Scripts.UINodeGraph.Runtime.Nodes, asm: Assembly-CSharp}
-      data:
-        guid: 18b9a7a7-def9-43ea-8de0-d26d543d2cbe
-        position: {x: 748, y: 324.8}
-        sceneName: Game
-    - rid: 5450877926747406422
+    - rid: 872592266763436032
       type: {class: PanelNodeData, ns: _Project.Scripts.UINodeGraph.Runtime.Nodes, asm: Assembly-CSharp}
       data:
         guid: 9e392b27-fe0f-476a-975f-a5c2983282d9
@@ -45,3 +50,27 @@ MonoBehaviour:
         useOverrideBack: 0
         autoDelay: 2
         closeIfLastOnBackInput: 0
+    - rid: 872592266763436033
+      type: {class: PanelNodeData, ns: _Project.Scripts.UINodeGraph.Runtime.Nodes, asm: Assembly-CSharp}
+      data:
+        guid: 83c88f37-c09d-488b-8ea1-749e032a8540
+        position: {x: 716.8, y: 438.4}
+        panelPrefab: {fileID: 4452731244273577260, guid: 96bbf1030a147094e9ce5f948e0e452a, type: 3}
+        useAutoTransition: 0
+        useOverrideBack: 0
+        autoDelay: 2
+        closeIfLastOnBackInput: 0
+    - rid: 872592266763436034
+      type: {class: SceneNodeData, ns: _Project.Scripts.UINodeGraph.Runtime.Nodes, asm: Assembly-CSharp}
+      data:
+        guid: 18b9a7a7-def9-43ea-8de0-d26d543d2cbe
+        position: {x: 904.8, y: 237.6}
+        sceneName: Game
+    - rid: 872592266763436035
+      type: {class: FadeTransition, ns: _Project.Scripts.UINodeGraph.Runtime.Transitions, asm: Assembly-CSharp}
+      data:
+        duration: 0.3
+    - rid: 5450877926747406420
+      type: {class: FadeTransition, ns: _Project.Scripts.UINodeGraph.Runtime.Transitions, asm: Assembly-CSharp}
+      data:
+        duration: 0.3

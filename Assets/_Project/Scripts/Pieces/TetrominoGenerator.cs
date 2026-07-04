@@ -1,4 +1,5 @@
 ﻿using System;
+using _Project.Scripts.Grid;
 using _Project.Scripts.SOAP.Events;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -9,25 +10,57 @@ namespace Project.Scripts.Pieces
     {
         [SerializeField] private Tetromino[] tetrominoPrefabs;
         [SerializeField] private SpriteEvent nextSpriteEvent;
+        [SerializeField] private TetrominoEvent tetrominoLockedEvent;
         private int currentIndex;
         private int nextIndex;
+        private IGridSystem gridSystem;
+        private bool canGenerate = true;
 
 
-       
-
-        private void Start()
+        private void OnEnable()
         {
+            tetrominoLockedEvent.Subscribe(HandleTetrominoLocked);
+        }
+
+        private void OnDestroy()
+        {
+            tetrominoLockedEvent.Unsubscribe(HandleTetrominoLocked);
+        }
+
+        private void HandleTetrominoLocked(Tetromino tetromino)
+        {
+            gridSystem.AddToGrid(tetromino.transform);
+            gridSystem.CheckLines();
+            Generate();
+        }
+
+        public void Init(IGridSystem gridSystem)
+        {
+            this.gridSystem = gridSystem;
             nextIndex = Random.Range(0, tetrominoPrefabs.Length);
             Generate();
         }
 
+        public void Stop()
+        {
+            canGenerate = false;
+        }
+
         public void Generate()
         {
+            if (!canGenerate) return; 
+    
             currentIndex = nextIndex;
-            Instantiate(tetrominoPrefabs[currentIndex], transform.position, Quaternion.identity);
+            var tetromino = Instantiate(
+                tetrominoPrefabs[currentIndex], 
+                transform.position, 
+                Quaternion.identity
+            ).GetComponent<Tetromino>();
+    
+            tetromino.Init(gridSystem);
             nextIndex = Random.Range(0, tetrominoPrefabs.Length);
             nextSpriteEvent.Raise(tetrominoPrefabs[nextIndex].sprite);
-            
         }
+
     }
 }

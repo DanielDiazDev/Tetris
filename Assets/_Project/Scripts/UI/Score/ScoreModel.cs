@@ -10,11 +10,12 @@ using UnityEngine;
 
 public class ScoreModel : BaseModel
 {
-    [HideInInspector] public ReactiveProperty<int> score = new();
+    public ReactiveProperty<int> Score { get; } = new ReactiveProperty<int>();
     [SerializeField] private IntEvent addScoreEvent;
 
-    private void Awake()
+    public void AddScore(int amount)
     {
-        ScoreSystem.Instance.SetScoreModel(this);
+        Score.Value += amount;
     }
+    public int GetScore() => Score.Value;
 }

@@ -5,7 +5,7 @@ public class ScoreController : BaseController<ScoreModel, ScoreView>
 {
     public ScoreController(ScoreView view, ScoreModel model) : base(view, model)
     {
-        model.score.Subscribe(view.SetScore).AddTo(view);
+        model.Score.Subscribe(view.SetScore).AddTo(view);
     }
 
 
