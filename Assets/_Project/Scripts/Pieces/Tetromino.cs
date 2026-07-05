@@ -52,9 +52,11 @@ namespace Project.Scripts.Pieces
             if (Time.time - previousTIme > (isSoftDropping ? fallTime / 20f : fallTime))
             {
                 transform.position += Vector3.down;
+                SnapParent();
                 if (!gridSystem.IsWithin(transform))
                 {
                     transform.position -= Vector3.down;
+                    SnapParent();
                     foreach (var moveButton in FindObjectsByType<HorizontalMoveButton>())
                     {
                         moveButton.OnHorizontalMoveButtonPressed -= MoveHorizontal;
@@ -71,21 +73,31 @@ namespace Project.Scripts.Pieces
         private void MoveHorizontal(Vector3 direction)
         {
             transform.position += direction;
+            SnapParent();
             if (!gridSystem.IsWithin(transform))
             {
                 transform.position -= direction;
+                SnapParent();
             }
         }
-        
+        private void SnapParent()
+        {
+            transform.position = gridSystem.GridToWorldCenter(
+                gridSystem.WorldToGrid(transform.position).x,
+                gridSystem.WorldToGrid(transform.position).y
+            );
+        }
 
         private void RotateTetromino()
         {
             rotationState = (rotationState + 1) % 4;
             
                 transform.RotateAround(transform.TransformPoint(rotationPoint), Vector3.forward, -90);
+               SnapParent();
                 if (!gridSystem.IsWithin(transform))
                 {
                     transform.RotateAround(transform.TransformPoint(rotationPoint), Vector3.forward, 90);
+                    SnapParent();
                     rotationState = (rotationState + 3) % 4;
                 }
         }

@@ -51,9 +51,10 @@ namespace Project.Scripts.Pieces
             if (!canGenerate) return; 
     
             currentIndex = nextIndex;
+            var worldPosToGrid = gridSystem.WorldToGrid(transform.position);
             var tetromino = Instantiate(
                 tetrominoPrefabs[currentIndex], 
-                transform.position, 
+                gridSystem.GridToWorldCenter(worldPosToGrid.x, worldPosToGrid.y), 
                 Quaternion.identity
             ).GetComponent<Tetromino>();
     

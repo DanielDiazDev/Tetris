@@ -14,5 +14,9 @@ namespace _Project.Scripts.Grid
         bool IsWithin(Transform tetromino);
         event Action<int> OnAddScore;
         event Action OnCheckLevel;
+
+        Vector3 GridToWorld(int x, int y);
+        Vector3 GridToWorldCenter(int x, int y);
+        Vector2Int WorldToGrid(Vector3 worldPosition);
     }
 }

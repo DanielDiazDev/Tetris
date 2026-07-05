@@ -1,5 +1,6 @@
 ﻿using System;
 using _Project.Scripts.SOAP.Events;
+using TMPro;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -11,6 +12,8 @@ namespace _Project.Scripts.Grid
         private Transform[,] grid;
         private int height;
         private int width;
+        private float cellSize;
+        private Vector3 origin;
         public int X => width;
         public int Y => height;
         public event Action OnGameOver;
@@ -18,20 +21,23 @@ namespace _Project.Scripts.Grid
         public event Action<int> OnAddScore;
         
 
-        public GridSystem(int height, int width)
+        public GridSystem(int width, int height, float cellSize, Vector3 origin)
         {
             grid = new Transform[width, height];
             this.height = height;
             this.width = width;
-            
+            this.cellSize = cellSize;
+            this.origin = origin;
+            DrawDebugLines();
         }
 
         public void AddToGrid(Transform tetromino)
         {
             foreach (Transform child in tetromino)
             {
-                int x = Mathf.RoundToInt(child.position.x);
-                int y = Mathf.RoundToInt(child.position.y);
+                var gridChildPosition = WorldToGrid(child.position);
+                int x = gridChildPosition.x;
+                int y = gridChildPosition.y;
                 
                 grid[x, y] = child;
 
@@ -41,13 +47,49 @@ namespace _Project.Scripts.Grid
                 }
             }
         }
+        private bool IsValid(int x, int y) => x >= 0 && y >= 0 && x < width && y < height;
+        private void DrawDebugLines() 
+        {
+            const float duration = 100f;
+            var parent = new GameObject("Debugging");
+
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    CreateWorldText(parent, x + "," + y, GridToWorldCenter(x, y), Forward);
+                    Debug.DrawLine(GridToWorld(x, y), GridToWorld(x, y + 1), Color.white, duration);
+                    Debug.DrawLine(GridToWorld(x, y), GridToWorld(x + 1, y), Color.white, duration);
+                }
+            }
+
+            Debug.DrawLine(GridToWorld(0, height), GridToWorld(width, height), Color.white, duration);
+            Debug.DrawLine(GridToWorld(width, 0), GridToWorld(width, height), Color.white, duration);
+        }
+        
+        TextMeshPro CreateWorldText(GameObject parent, string text, Vector3 position, Vector3 dir, 
+            int fontSize = 2, Color color = default, TextAlignmentOptions textAnchor = TextAlignmentOptions.Center, int sortingOrder = 0) 
+        {
+            GameObject gameObject = new GameObject("DebugText_" + text, typeof(TextMeshPro));
+            gameObject.transform.SetParent(parent.transform);
+            gameObject.transform.position = position;
+            gameObject.transform.forward = dir;
+
+            TextMeshPro textMeshPro = gameObject.GetComponent<TextMeshPro>();
+            textMeshPro.text = text;
+            textMeshPro.fontSize = fontSize;
+            textMeshPro.color = color == default ? Color.white : color;
+            textMeshPro.alignment = textAnchor;
+            textMeshPro.GetComponent<MeshRenderer>().sortingOrder = sortingOrder;
+
+            return textMeshPro;
+        }
         public bool IsWithin(Transform tetromino)
         {
             foreach (Transform child in tetromino)
             {
-                int x = Mathf.RoundToInt(child.position.x);
-                int y = Mathf.RoundToInt(child.position.y);
-                if (x < 0 || x >= width || y < 0 || y >= height)
+                var gridChildPosition = WorldToGrid(child.position);
+                int x = gridChildPosition.x;
+                int y = gridChildPosition.y;
+                if (!IsValid(x, y))
                 {
                     return false;
                 }
@@ -108,6 +150,27 @@ namespace _Project.Scripts.Grid
                 }
             }
         }
+        
+        
+
+        public Vector3 GridToWorld(int x, int y)
+        {
+            return new Vector3(x, y, 0) *  cellSize + origin;
+        }
+        public Vector3 GridToWorldCenter(int x, int y) 
+        {
+            return new Vector3(x * cellSize + cellSize * 0.5f, y * cellSize + cellSize * 0.5f, 0) + origin;
+        }
+
+        public Vector2Int WorldToGrid(Vector3 worldPosition) 
+        {
+            Vector3 gridPosition = (worldPosition - origin) / cellSize;
+            var x = Mathf.FloorToInt(gridPosition.x);
+            var y = Mathf.FloorToInt(gridPosition.y);
+            return new Vector2Int(x, y);
+        }
+        
+        public Vector3 Forward => Vector3.forward;
 
         
     }

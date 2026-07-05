@@ -23,7 +23,7 @@ namespace _Project.Scripts.Core
         private void Awake()
         {
            ResetGame();
-           gridSystem = new GridSystem(20, 10);
+           gridSystem = new GridSystem(10, 20, 1f, new Vector3(-5, -10, 0));
            scoreSystem = new ScoreSystem(scoreModel);
            tetrominoGenerator.Init(gridSystem);
         }
