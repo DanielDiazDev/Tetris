@@ -17,6 +17,11 @@ public class LevelUI : MonoBehaviour
         setLevelEvent.Unsubscribe(SetLevel);
     }
 
+    private void Awake()
+    {
+        SetLevel(1);
+    }
+
     private void SetLevel(int level)
     {
         levelText.text = level.ToString();

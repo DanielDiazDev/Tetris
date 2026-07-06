@@ -119,51 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &34378664
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 34378665}
-  - component: {fileID: 34378666}
-  m_Layer: 0
-  m_Name: LevelSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &34378665
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 34378664}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1639738367}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &34378666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 34378664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0be7cbfe9c14dc69fe7545625462407, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Score.LevelSystem
-  setLevelEvent: {fileID: 11400000, guid: 0f91aa42edc09f34f95253192746baed, type: 2}
 --- !u!1 &52915139
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,6 +1197,7 @@ MonoBehaviour:
   setFallTimeEvent: {fileID: 11400000, guid: a840488c00ac9e54498c1a2fc11e958b, type: 2}
   finalScoreEvent: {fileID: 11400000, guid: 6c0510fe4e0711b418679a90318e34c8, type: 2}
   scoreModel: {fileID: 62987326}
+  setLevelEvent: {fileID: 11400000, guid: 0f91aa42edc09f34f95253192746baed, type: 2}
 --- !u!1 &1024413596
 GameObject:
   m_ObjectHideFlags: 0
@@ -1486,13 +1442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Project.Scripts.Pieces.TetrominoGenerator
   tetrominoPrefabs:
-  - {fileID: 5447161407484716078, guid: 9381de7a2c4c58e47b3bc09a68372efd, type: 3}
-  - {fileID: 5447161407484716078, guid: af6562904b880d347a086fa9067e55ec, type: 3}
-  - {fileID: 5447161407484716078, guid: ac24288a9d97bed48a653e1b3c6bae35, type: 3}
   - {fileID: 5447161407484716078, guid: e96cb91847585904f8fa5099cbc4aa79, type: 3}
-  - {fileID: 5447161407484716078, guid: 8a4d8b53459eeb14480dc3df7fe8f000, type: 3}
-  - {fileID: 5447161407484716078, guid: 13d4b3e30b0f0fa4ea6f884a15996696, type: 3}
-  - {fileID: 5447161407484716078, guid: cca4fa766f0f27b418fc18acd93d21b7, type: 3}
   nextSpriteEvent: {fileID: 11400000, guid: c1a2540a138e729478c3be6e7341bd2a, type: 2}
   tetrominoLockedEvent: {fileID: 11400000, guid: dc8f5b0813be36045a5f7448afef3e2c, type: 2}
 --- !u!1 &1058526916
@@ -1943,7 +1893,6 @@ Transform:
   - {fileID: 980307457}
   - {fileID: 1036102963}
   - {fileID: 1024413597}
-  - {fileID: 34378665}
   - {fileID: 1500877500}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

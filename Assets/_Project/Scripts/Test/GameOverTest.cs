@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class GameOverTest : MonoBehaviour
+public class GameOverUITest : MonoBehaviour
 {
     //public static GameOverTest Instance;
     [SerializeField] private GameObject gameOverPanel;

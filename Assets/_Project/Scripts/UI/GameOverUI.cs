@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace _Project.Scripts.UI
 {
-    public class GameOver : MonoBehaviour
+    public class GameOverUI : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI finalScoreText;
         [SerializeField] private IntEvent finalScoreEvent;
