@@ -235,6 +235,9 @@ MonoBehaviour:
   sprite: {fileID: 0}
   setFallTimeEvent: {fileID: 11400000, guid: a840488c00ac9e54498c1a2fc11e958b, type: 2}
   tetrominoLockedEvent: {fileID: 11400000, guid: dc8f5b0813be36045a5f7448afef3e2c, type: 2}
+  swipeEvent: {fileID: 11400000, guid: 15d5552dbe874ef4f837ba3afabfe9a0, type: 2}
+  softDroppedEvent: {fileID: 11400000, guid: f42e6169db5563744b4af25efc519cfe, type: 2}
+  rotationEvent: {fileID: 11400000, guid: c822774dc1350324b8641c5b9e2c9a25, type: 2}
 --- !u!1 &4388662634470533293
 GameObject:
   m_ObjectHideFlags: 0

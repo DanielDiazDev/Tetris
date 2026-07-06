@@ -40,13 +40,18 @@ namespace _Project.Scripts.Grid
                 int y = gridChildPosition.y;
                 
                 grid[x, y] = child;
-
-                if (y >= 19) 
-                {
-                    OnGameOver?.Invoke();
-                }
+                Debug.Log($"{x},{y} ");
+                // if (y >= 16) 
+                // {
+                //     OnGameOver?.Invoke();
+                // }
             }
         }
+        public void TriggerGameOver()
+        {
+            OnGameOver?.Invoke();
+        }
+   
         private bool IsValid(int x, int y) => x >= 0 && y >= 0 && x < width && y < height;
         private void DrawDebugLines() 
         {

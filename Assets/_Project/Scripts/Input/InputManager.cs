@@ -1,4 +1,5 @@
 ﻿using System;
+using _Project.Scripts.Utils;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,58 +9,83 @@ namespace Project.Scripts.Input
     public class InputManager : MonoBehaviour
     {
         public static InputManager Instance { get; private set; }
-
-        public Vector2 DragDelta { get; private set; }
-        public bool IsDragging { get; private set; }
-        public event Action OnTap;
-        private Vector2 lastPointerPos;
+        private PlayerInput playerInput;
+        public event Action<Vector2, float> OnStartTouchEvent;
+        public event Action<Vector2,  float> OnEndTouchEvent;
+        public event Action<Vector2> OnTouchHeldEvent;
+        public event Action OnTouch;
+        private bool isTouching;
+        private new Camera camera;
+        private InputAction primaryContactInput;
+        private InputAction primaryPosition;
+        private InputAction touchInput;
+    
         private void OnEnable()
         {
-            var playerInput = GetComponent<PlayerInput>();
-            playerInput.actions["PointerPress"].performed += OnPress;
-            playerInput.actions["PointerPress"].canceled += OnRelease;
-            playerInput.actions["PointerPosition"].performed += OnPointerMove;
+            
+            playerInput.actions.Enable();
+            primaryContactInput.started += StartTouchPrimary;
+            primaryContactInput.canceled += EndTouchPrimary;
+            primaryPosition.performed += TouchHeldPrimary;
+            touchInput.started += StartTouch;
         }
+
+        private void StartTouch(InputAction.CallbackContext ctx)
+        {
+            OnTouch?.Invoke();
+        }
+
 
         private void OnDisable()
         {
-            var playerInput = GetComponent<PlayerInput>();
-            playerInput.actions["PointerPress"].performed -= OnPress;
-            playerInput.actions["PointerPress"].canceled -= OnRelease;
-            playerInput.actions["PointerPosition"].performed -= OnPointerMove;
+            playerInput.actions.Disable();
+            primaryContactInput.started -= StartTouchPrimary;
+            primaryContactInput.canceled -= EndTouchPrimary;
+            primaryPosition.performed -= TouchHeldPrimary;
+            touchInput.started -= StartTouch;
+           
         }
         private void Awake()
         {
-            Instance = this;
-        }
-        private void OnPress(InputAction.CallbackContext ctx)
-        {
-            IsDragging = true;
-           // lastPointerPos = ctx.ReadValue<Vector2>();
-            DragDelta = Vector2.zero;
-        }
-
-        private void OnRelease(InputAction.CallbackContext ctx)
-        {
-            if (DragDelta == Vector2.zero)
+            if (Instance == null)
             {
-                OnTap?.Invoke();
+                Instance = this;
             }
-            IsDragging = false;
-            DragDelta = Vector2.zero;
+            else
+            {
+                Destroy(gameObject);
+            }
+            camera = Camera.main;
+            playerInput = GetComponent<PlayerInput>();
+            primaryContactInput = playerInput.actions["PrimaryContact"];
+            primaryPosition = playerInput.actions["PrimaryPosition"];
+            touchInput = playerInput.actions["Touch"];
+        }
+        
+        private void TouchHeldPrimary(InputAction.CallbackContext ctx)
+        {
+            if(!isTouching) return;
+            OnTouchHeldEvent?.Invoke(
+                ScreenUtils.ScreenToWorld(camera, primaryPosition.ReadValue<Vector2>())
+            );
+        }
+        private void StartTouchPrimary(InputAction.CallbackContext ctx)
+        {
+            isTouching = true;
+            OnStartTouchEvent?.Invoke(ScreenUtils.ScreenToWorld(camera, 
+                primaryPosition.ReadValue<Vector2>()), (float)ctx.startTime);
+        }
+        private void EndTouchPrimary(InputAction.CallbackContext ctx)
+        {
+            isTouching = false;
+            OnEndTouchEvent?.Invoke(ScreenUtils.ScreenToWorld(camera, 
+                primaryPosition.ReadValue<Vector2>()), (float)ctx.time);
         }
 
-        private void OnPointerMove(InputAction.CallbackContext ctx)
+        public Vector2 PrimaryPosition()
         {
-            if (!IsDragging) return;
-            Vector2 currentPos = ctx.ReadValue<Vector2>();
-            DragDelta = currentPos - lastPointerPos; 
-            lastPointerPos = currentPos;
+            return ScreenUtils.ScreenToWorld(camera, primaryPosition.ReadValue<Vector2>());
         }
-
-        public void DragToZero()
-        {
-            DragDelta = Vector2.zero;
-        }
+       
     }
 }

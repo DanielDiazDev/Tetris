@@ -9,7 +9,7 @@ namespace _Project.Scripts.Grid
         void AddToGrid(Transform tetromino);
         int X  { get; }
         int Y { get; }
-
+        void TriggerGameOver();
         void CheckLines();
         bool IsWithin(Transform tetromino);
         event Action<int> OnAddScore;

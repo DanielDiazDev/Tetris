@@ -16,34 +16,41 @@ namespace Project.Scripts.Pieces
         [field: SerializeField] public Sprite sprite;
         [SerializeField] private FloatEvent setFallTimeEvent;
         [SerializeField] private TetrominoEvent tetrominoLockedEvent;
+        [SerializeField] private Vector3Event swipeEvent;
+        [SerializeField] private BoolEvent softDroppedEvent;
+        [SerializeField] private VoidEvent rotationEvent;
         private float previousTIme;
         private int rotationState;
         private bool isSoftDropping;
         private float minFallTime = 0.05f;
         private IGridSystem gridSystem;
+        private GhostTetrominoController ghostTetrominoController;
         private void OnEnable()
         {
-            foreach (var moveButton in FindObjectsByType<HorizontalMoveButton>())
-            {
-                moveButton.OnHorizontalMoveButtonPressed += MoveHorizontal;
-            }
-            FindAnyObjectByType<SoftDropButton>().OnSoftDropButtonPressed += SetSoftDropping;
-            FindAnyObjectByType<RotateButton>().OnRotateButtonPressed += RotateTetromino;
+            swipeEvent.Subscribe(MoveHorizontal);
+            softDroppedEvent.Subscribe(SetSoftDropping);
+            rotationEvent.Subscribe(RotateTetromino);
             setFallTimeEvent.Subscribe(SetFallSpeed);
             
         }
 
         private void OnDestroy()
         {
+            swipeEvent.Unsubscribe(MoveHorizontal);
+            softDroppedEvent.Unsubscribe(SetSoftDropping);
+            rotationEvent.Unsubscribe(RotateTetromino);
             setFallTimeEvent.Unsubscribe(SetFallSpeed);
         }
-        public void Init(IGridSystem gridSystem)
+        public void Init(IGridSystem gridSystem, GhostTetrominoController ghostTetrominoController)
         {
             this.gridSystem = gridSystem;
+            this.ghostTetrominoController = ghostTetrominoController;
+            ghostTetrominoController.CreateGhost(gameObject);
+            ghostTetrominoController.UpdateGhost(gameObject);
         }
+       
         private void Update()
         {
-            
             HandleFallTime();
         }
 
@@ -57,12 +64,13 @@ namespace Project.Scripts.Pieces
                 {
                     transform.position -= Vector3.down;
                     SnapParent();
-                    foreach (var moveButton in FindObjectsByType<HorizontalMoveButton>())
+                    swipeEvent.Unsubscribe(MoveHorizontal);
+                    if (ghostTetrominoController?.GhostTetromino != null)
                     {
-                        moveButton.OnHorizontalMoveButtonPressed -= MoveHorizontal;
+                        Destroy(ghostTetrominoController.GhostTetromino);
                     }
-                    FindAnyObjectByType<SoftDropButton>().OnSoftDropButtonPressed -= SetSoftDropping;
-                    FindAnyObjectByType<RotateButton>().OnRotateButtonPressed -= RotateTetromino;
+                    softDroppedEvent.Unsubscribe(SetSoftDropping);
+                    rotationEvent.Unsubscribe(RotateTetromino);
                     tetrominoLockedEvent.Raise(this);
                     enabled = false;
                 }
@@ -79,6 +87,7 @@ namespace Project.Scripts.Pieces
                 transform.position -= direction;
                 SnapParent();
             }
+            ghostTetrominoController.UpdateGhost(gameObject);
         }
         private void SnapParent()
         {
@@ -88,7 +97,7 @@ namespace Project.Scripts.Pieces
             );
         }
 
-        private void RotateTetromino()
+        private void RotateTetromino(Unit _)
         {
             rotationState = (rotationState + 1) % 4;
             
@@ -100,6 +109,7 @@ namespace Project.Scripts.Pieces
                     SnapParent();
                     rotationState = (rotationState + 3) % 4;
                 }
+            ghostTetrominoController.UpdateGhost(gameObject);
         }
 
         private void SetSoftDropping(bool isDropping)

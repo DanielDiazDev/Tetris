@@ -15,7 +15,7 @@ namespace Project.Scripts.Pieces
         private int nextIndex;
         private IGridSystem gridSystem;
         private bool canGenerate = true;
-
+       // private GhostTetrominoController ghostTetrominoController;
 
         private void OnEnable()
         {
@@ -38,6 +38,7 @@ namespace Project.Scripts.Pieces
         {
             this.gridSystem = gridSystem;
             nextIndex = Random.Range(0, tetrominoPrefabs.Length);
+        //    ghostTetrominoController = new  GhostTetrominoController(gridSystem);
             Generate();
         }
 
@@ -57,11 +58,23 @@ namespace Project.Scripts.Pieces
                 gridSystem.GridToWorldCenter(worldPosToGrid.x, worldPosToGrid.y), 
                 Quaternion.identity
             ).GetComponent<Tetromino>();
-    
-            tetromino.Init(gridSystem);
+            var ghostTetrominoController = new GhostTetrominoController(gridSystem);
+            tetromino.Init(gridSystem, ghostTetrominoController);
+            if (!gridSystem.IsWithin(tetromino.transform))
+            {
+                Stop();
+                Destroy(ghostTetrominoController.GhostTetromino.gameObject);
+                gridSystem.TriggerGameOver();
+                return;
+            }
             nextIndex = Random.Range(0, tetrominoPrefabs.Length);
             nextSpriteEvent.Raise(tetrominoPrefabs[nextIndex].sprite);
         }
 
+        
+        
+
+       
+        
     }
 }
