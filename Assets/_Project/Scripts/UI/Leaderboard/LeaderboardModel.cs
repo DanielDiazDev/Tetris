@@ -1,22 +1,26 @@
 using System;
 using System.Collections.Generic;
 using _Project.Scripts.Auth;
+using _Project.Scripts.Core;
 using _Project.Scripts.MVC;
 using UniRx;
 using UnityEngine;
 
 public class LeaderboardModel : BaseModel
 {
-    public ReactiveCollection<LeaderboardEntryData> LeaderboardEntryDatas { get; } = new ReactiveCollection<LeaderboardEntryData>();
+    public ReactiveCollection<PlayerLeaderboardEntryData> LeaderboardEntryDatas { get; } = new ReactiveCollection<PlayerLeaderboardEntryData>();
 
     private void Awake()
     {
-        PlayFabLeaderboard.Instance.SetModel(this);
+        ServiceLocator.Instance.GetService<ILeaderboardService>().SetModel(this);
     }
 
-    public void Add(LeaderboardEntryData entry)
+    public void Add(List<PlayerLeaderboardEntryData> leaderboardEntriesData)
     {
-        LeaderboardEntryDatas.Add(entry);
+        foreach (var entry in leaderboardEntriesData)
+        {
+            LeaderboardEntryDatas.Add(entry);
+        }
     }
     
 }

@@ -7,7 +7,7 @@ public class LeaderboardController : BaseController<LeaderboardModel, Leaderboar
     public LeaderboardController(LeaderboardView view, LeaderboardModel model) : base(view, model)
     {
         // Subscribe to events here
-        model.LeaderboardEntryDatas.ObserveAdd().Subscribe(_ =>
+        model.LeaderboardEntryDatas.ObserveCountChanged().Subscribe(_ =>
         {
              view.SetLeaderboard(model.LeaderboardEntryDatas.ToList());
         }).AddTo(view);

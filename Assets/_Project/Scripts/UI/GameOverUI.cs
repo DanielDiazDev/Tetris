@@ -1,5 +1,6 @@
 ﻿using System;
 using _Project.Scripts.Auth;
+using _Project.Scripts.Core;
 using _Project.Scripts.SOAP.Events;
 using TMPro;
 using UnityEngine;
@@ -11,38 +12,34 @@ namespace _Project.Scripts.UI
     public class GameOverUI : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI finalScoreText;
-        [SerializeField] private IntEvent finalScoreEvent;
+        [SerializeField] private GameOverResultEvent gameOverResultEvent;
         [SerializeField] private Button saveFinalScoreButton;
+        [SerializeField] private TextMeshProUGUI recordText;
         private int finalScore;
-        private PlayFabLeaderboard leaderboard;
+      //  private PlayFabLeaderboard leaderboard;
 
         private void OnEnable()
         {
-            finalScoreEvent.Subscribe(SetFinalScore);
+            gameOverResultEvent.Subscribe(SetFinalScore);
         }
 
         private void OnDestroy()
         {
-            finalScoreEvent.Unsubscribe(SetFinalScore);
+            gameOverResultEvent.Unsubscribe(SetFinalScore);
         }
-
-        private void Awake()
+        private void SetFinalScore(GameOverData gameOverData)
         {
-         //  resetButton.onClick.AddListener(() => SceneManager.LoadScene(SceneManager.GetActiveScene().name));
-          //  exitButton.onClick.AddListener(Application.Quit);
-          //  saveFinalScoreButton.onClick.AddListener(() => leaderboard.UpdatePlayerStatics("Leaderboard", finalScore));
-            saveFinalScoreButton.onClick.AddListener(() => PlayFabLeaderboard.Instance.UpdatePlayerStatics("Leaderboard", finalScore));
+            finalScore = gameOverData.score;
+            finalScoreText.text = $"Final Score: {gameOverData.score}";
+            recordText.gameObject.SetActive(gameOverData.isNewRecord);
+
+            // if (gameOverData.isNewRecord)
+            // {
+            //     saveFinalScoreButton.onClick.AddListener(() => 
+            //         ServiceLocator.Instance.GetService<ILeaderboardService>()
+            //             .UpdatePlayerStatics("Leaderboard", gameOverData.score));
+            // }
         }
 
-        // public void Init(PlayFabLeaderboard leaderboard)
-        // {
-        //     this.leaderboard = leaderboard;
-        // }
-
-        private void SetFinalScore(int score)
-        {
-            finalScore = score;
-            finalScoreText.text = $"Final Score: {score}";
-        }
     }
 }

@@ -1,36 +1,56 @@
 ﻿using System;
 using System.Collections.Generic;
+using _Project.Scripts.Core;
 using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine;
 
 namespace _Project.Scripts.Auth
 {
-    public class PlayFabLeaderboard : MonoBehaviour
+    public interface ILeaderboardService
     {
-        public static PlayFabLeaderboard Instance { get; private set; }
-        public Action<List<LeaderboardEntryData>> OnLeaderboardEntryDatas;
-        private LeaderboardModel model;
+        void GetLeaderboardEntries(int startPosition, int maxResultsCount, string leaderboardName);
+        void UpdatePlayerStatics(string leaderboardName, int score);
+        void GetPlayerLeaderboardPoints(string leaderboardName, Action<int> onResult);
+        void SetModel(LeaderboardModel leaderboardModel);
+    }
 
-        // public PlayFabLeaderboard(LeaderboardModel model)
-        // {
-        //     this.model = model;
-        // }
-        private void Awake()
-        {
-            if (Instance == null)
-            {
-                Instance = this;
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-        }
+    public class PlayFabLeaderboardService : ILeaderboardService, IDisposable
+    {
+        private LeaderboardModel model;
+        
 
         public void SetModel(LeaderboardModel leaderboardModel)
         {
             model = leaderboardModel;
+        }
+
+        public void GetPlayerLeaderboardPoints(string leaderboardName, Action<int> onResult)
+        {
+            var request = new GetLeaderboardAroundPlayerRequest()
+            {
+                StatisticName = leaderboardName,
+                MaxResultsCount = 1
+            };
+            PlayFabClientAPI.GetLeaderboardAroundPlayer(
+                request,
+                result =>
+                {
+                    if (result.Leaderboard.Count > 0)
+                    {
+                        int points = result.Leaderboard[0].StatValue;
+                        onResult?.Invoke(points);
+                    }
+                    else
+                    {
+                        onResult?.Invoke(0);
+                    }
+                },
+                error =>
+                {
+                    Debug.LogError($"Failed to get leaderboard: {error.GenerateErrorReport()}");
+                    onResult?.Invoke(0);
+                });
         }
 
         public void GetLeaderboardEntries(int startPosition, int maxResultsCount, string leaderboardName)
@@ -52,14 +72,16 @@ namespace _Project.Scripts.Auth
 
         private void OnGetLeaderboardSuccess(GetLeaderboardResult response)
         {
+            List<PlayerLeaderboardEntryData> playerLeaderboardEntriesData = new List<PlayerLeaderboardEntryData>();
             foreach (var playerLeaderboardEntry in response.Leaderboard)
             {
-                var playerEntry = new LeaderboardEntryData();
-                playerEntry.place = playerLeaderboardEntry.Position;
-                playerEntry.leaderboardName = playerLeaderboardEntry.DisplayName;
-                playerEntry.score =  playerLeaderboardEntry.StatValue;
-                model.Add(playerEntry);
+                var playerLeaderboardEntryData = new PlayerLeaderboardEntryData();
+                playerLeaderboardEntryData.place = playerLeaderboardEntry.Position;
+                playerLeaderboardEntryData.leaderboardName = playerLeaderboardEntry.DisplayName;
+                playerLeaderboardEntryData.score =  playerLeaderboardEntry.StatValue;
+                playerLeaderboardEntriesData.Add(playerLeaderboardEntryData);
             }
+            model.Add(playerLeaderboardEntriesData);
         }
 
         public void UpdatePlayerStatics(string leaderboardName, int score)
@@ -87,8 +109,13 @@ namespace _Project.Scripts.Auth
         {
             Debug.Log("Updated");
         }
+
+        public void Dispose()
+        {
+            ServiceLocator.Instance.UnregisterService<ILeaderboardService>();
+        }
     }
-    public class LeaderboardEntryData
+    public class PlayerLeaderboardEntryData
     {
         public int place;
         public string leaderboardName;

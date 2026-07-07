@@ -1159,7 +1159,7 @@ GameObject:
   - component: {fileID: 980307457}
   - component: {fileID: 980307458}
   m_Layer: 0
-  m_Name: GameBootstrap
+  m_Name: GameInstaller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1195,7 +1195,7 @@ MonoBehaviour:
   tetrominoGenerator: {fileID: 1036102964}
   addScoreEvent: {fileID: 11400000, guid: 8e8ea1570d4a77947a12d7e1c89211a4, type: 2}
   setFallTimeEvent: {fileID: 11400000, guid: a840488c00ac9e54498c1a2fc11e958b, type: 2}
-  finalScoreEvent: {fileID: 11400000, guid: 6c0510fe4e0711b418679a90318e34c8, type: 2}
+  gameOverResultEvent: {fileID: 11400000, guid: b5b0b2404989f7d4ca12caeebbc22ec1, type: 2}
   scoreModel: {fileID: 62987326}
   setLevelEvent: {fileID: 11400000, guid: 0f91aa42edc09f34f95253192746baed, type: 2}
 --- !u!1 &1024413596
@@ -1680,50 +1680,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069841691}
   m_CullTransparentMesh: 1
---- !u!1 &1500877499
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1500877500}
-  - component: {fileID: 1500877501}
-  m_Layer: 0
-  m_Name: Leaderboard
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1500877500
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1500877499}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1639738367}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1500877501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1500877499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3844503c788410a9b314e3eedf0a14b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.PlayFab.PlayFabLeaderboard
 --- !u!1 &1571569262
 GameObject:
   m_ObjectHideFlags: 0
@@ -1893,7 +1849,6 @@ Transform:
   - {fileID: 980307457}
   - {fileID: 1036102963}
   - {fileID: 1024413597}
-  - {fileID: 1500877500}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1737089714

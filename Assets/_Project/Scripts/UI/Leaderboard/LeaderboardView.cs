@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using _Project.Scripts.Auth;
+using _Project.Scripts.Core;
 using _Project.Scripts.MVC;
 using _Project.Scripts.UI;
 using UnityEngine;
@@ -15,12 +16,16 @@ public class LeaderboardView : GeneralView<LeaderboardModel, LeaderboardControll
                controller = new LeaderboardController(this, GetComponent<LeaderboardModel>());
             }
             base.Initialize();
-            PlayFabLeaderboard.Instance.GetLeaderboardEntries(0, 6, "Leaderboard");
+           ServiceLocator.Instance.GetService<ILeaderboardService>().GetLeaderboardEntries(0, 6, "Leaderboard");
         }
 
-         public void SetLeaderboard(List<LeaderboardEntryData> leaderboardEntryDatas)
+         public void SetLeaderboard(List<PlayerLeaderboardEntryData> leaderboardEntriesData)
          {
-             foreach (var entryData in leaderboardEntryDatas)
+             foreach (Transform child in leaderboardEntryParent)
+             {
+                 Destroy(child.gameObject);
+             }
+             foreach (var entryData in leaderboardEntriesData)
              {
                  var leaderboardEntry = Instantiate(leaderboardEntryPrefab, leaderboardEntryParent).GetComponent<LeaderboardEntry>();
                  leaderboardEntry.Init(entryData);

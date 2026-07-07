@@ -10,9 +10,9 @@ namespace _Project.Scripts.UI
         [SerializeField] private TextMeshProUGUI nameText;
         [SerializeField] private TextMeshProUGUI scoreText;
 
-        public void Init(LeaderboardEntryData data)
+        public void Init(PlayerLeaderboardEntryData data)
         {
-            placeText.text = data.place.ToString();
+            placeText.text = $"{data.place + 1}";
             nameText.text = data.leaderboardName;
             scoreText.text = data.score.ToString();
         }
