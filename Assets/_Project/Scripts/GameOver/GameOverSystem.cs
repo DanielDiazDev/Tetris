@@ -16,13 +16,15 @@ namespace _Project.Scripts.GameOver
         private GameOverResultEvent gameOverResultEvent;
         private IScoreSystem scoreSystem;
         private IGridSystem gridSystem;
+        private LevelSystem levelSystem;
 
-        public GameOverSystem(TetrominoGenerator tetrominoGenerator, GameOverResultEvent gameOverResultEvent, IScoreSystem scoreSystem, IGridSystem gridSystem)
+        public GameOverSystem(TetrominoGenerator tetrominoGenerator, GameOverResultEvent gameOverResultEvent, IScoreSystem scoreSystem, IGridSystem gridSystem, LevelSystem levelSystem)
         {
             this.tetrominoGenerator = tetrominoGenerator;
             this.gameOverResultEvent = gameOverResultEvent;
             this.scoreSystem = scoreSystem;
             this.gridSystem = gridSystem;
+            this.levelSystem = levelSystem;
             gridSystem.OnGameOver += HandleGameOver;
             
         }
@@ -41,12 +43,12 @@ namespace _Project.Scripts.GameOver
                     {
                         ServiceLocator.Instance.GetService<ILeaderboardService>()
                             .UpdatePlayerStatics("Leaderboard", score);
-                        gameOverResultEvent.Raise(new GameOverData(){isNewRecord = true, score = score});
+                        gameOverResultEvent.Raise(new GameOverData(){isNewRecord = true, score = score, level = levelSystem.Level});
                         ServiceLocator.Instance.GetService<ICurrencyService>().AddCurrency("SC", 20);
                     }
                     else
                     {
-                        gameOverResultEvent.Raise(new GameOverData(){ isNewRecord = false,  score = score});
+                        gameOverResultEvent.Raise(new GameOverData(){ isNewRecord = false,  score = score, level = levelSystem.Level});
                     }
                     
                 });

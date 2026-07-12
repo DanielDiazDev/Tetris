@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.UINodeGraph.Runtime.UIFlowAsset
   initialNodeGuid: 1c8bbf28-5096-4268-a06e-aace59eca29e
   nodes:
-  - rid: 872592489965682693
-  - rid: 872592489965682694
-  - rid: 872592489965682695
+  - rid: 872592489965682774
+  - rid: 872592489965682775
+  - rid: 872592489965682776
+  - rid: 872592489965682777
   edges:
   - baseNodeGuid: 9e392b27-fe0f-476a-975f-a5c2983282d9
     portName: ResetButton
@@ -33,6 +34,11 @@ MonoBehaviour:
     targetNodeGuid: 9e392b27-fe0f-476a-975f-a5c2983282d9
     transition:
       rid: 872592489965682696
+  - baseNodeGuid: 9e392b27-fe0f-476a-975f-a5c2983282d9
+    portName: ExitButton
+    targetNodeGuid: e509fd34-af6b-4972-bda9-d563ded2f2b4
+    transition:
+      rid: 872592489965682778
   references:
     version: 2
     RefIds:
@@ -40,7 +46,11 @@ MonoBehaviour:
       type: {class: FadeTransition, ns: _Project.Scripts.UINodeGraph.Runtime.Transitions, asm: Assembly-CSharp}
       data:
         duration: 0.3
-    - rid: 872592489965682693
+    - rid: 872592489965682696
+      type: {class: FadeTransition, ns: _Project.Scripts.UINodeGraph.Runtime.Transitions, asm: Assembly-CSharp}
+      data:
+        duration: 0.3
+    - rid: 872592489965682774
       type: {class: PanelNodeData, ns: _Project.Scripts.UINodeGraph.Runtime.Nodes, asm: Assembly-CSharp}
       data:
         guid: 9e392b27-fe0f-476a-975f-a5c2983282d9
@@ -50,13 +60,13 @@ MonoBehaviour:
         useOverrideBack: 0
         autoDelay: 2
         closeIfLastOnBackInput: 0
-    - rid: 872592489965682694
+    - rid: 872592489965682775
       type: {class: SceneNodeData, ns: _Project.Scripts.UINodeGraph.Runtime.Nodes, asm: Assembly-CSharp}
       data:
         guid: 18b9a7a7-def9-43ea-8de0-d26d543d2cbe
         position: {x: 904.8, y: 237.6}
         sceneName: Game
-    - rid: 872592489965682695
+    - rid: 872592489965682776
       type: {class: PanelNodeData, ns: _Project.Scripts.UINodeGraph.Runtime.Nodes, asm: Assembly-CSharp}
       data:
         guid: 83c88f37-c09d-488b-8ea1-749e032a8540
@@ -66,7 +76,13 @@ MonoBehaviour:
         useOverrideBack: 0
         autoDelay: 2
         closeIfLastOnBackInput: 0
-    - rid: 872592489965682696
+    - rid: 872592489965682777
+      type: {class: SceneNodeData, ns: _Project.Scripts.UINodeGraph.Runtime.Nodes, asm: Assembly-CSharp}
+      data:
+        guid: e509fd34-af6b-4972-bda9-d563ded2f2b4
+        position: {x: 658.4, y: 72}
+        sceneName: MainMenu
+    - rid: 872592489965682778
       type: {class: FadeTransition, ns: _Project.Scripts.UINodeGraph.Runtime.Transitions, asm: Assembly-CSharp}
       data:
         duration: 0.3

@@ -17,5 +17,9 @@ public class ScoreModel : BaseModel
     {
         Score.Value += amount;
     }
+    public void SetScore(int value)
+    {
+        Score.Value = value;
+    }
     public int GetScore() => Score.Value;
 }

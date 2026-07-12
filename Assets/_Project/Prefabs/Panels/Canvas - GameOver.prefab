@@ -1424,6 +1424,8 @@ MonoBehaviour:
   gameOverResultEvent: {fileID: 11400000, guid: b5b0b2404989f7d4ca12caeebbc22ec1, type: 2}
   saveFinalScoreButton: {fileID: 7775777389418965637}
   recordText: {fileID: 239901161327804501}
+  resetButton: {fileID: 7749717064209556860}
+  resetCost: 10
 --- !u!1 &8770172303025096316
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,7 +1491,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SAVE SCORE
+  m_text: LEADERBOARD
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

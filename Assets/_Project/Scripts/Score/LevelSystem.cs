@@ -49,6 +49,12 @@ namespace _Project.Scripts.Score
             setLevelEvent.Raise(Level);
         }
 
+        public void SetLevel(int level)
+        {
+            Level = level;
+            setLevelEvent.Raise(Level);
+        }
+
         public void Dispose()
         {
             if (gridSystem != null)

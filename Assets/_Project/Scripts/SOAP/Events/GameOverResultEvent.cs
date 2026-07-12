@@ -13,5 +13,6 @@ namespace _Project.Scripts.SOAP.Events
     {
         public int score;
         public bool isNewRecord;
+        public int level;
     }
 }

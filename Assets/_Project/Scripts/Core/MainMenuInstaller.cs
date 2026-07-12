@@ -16,7 +16,6 @@ namespace _Project.Scripts.Core
         private IDisplayNameHandler displayNameHandler;
         private IUserDataService  userDataService;
         private ITitleDataService titleDataService;
-        private ILeaderboardService leaderboardService;
         private void Awake()
         {
             var currencyService = ServiceLocator.Instance.GetService<ICurrencyService>();
@@ -25,8 +24,7 @@ namespace _Project.Scripts.Core
             userInitializer = new UserInitializer(titleDataService,currencyService , userDataService);
             displayNameHandler = new DisplayNameHandler(saveNameEvent, titleDataService);
             playFabLogin = new PlayFabLogin(userInitializer, displayNameHandler);
-            leaderboardService = new PlayFabLeaderboardService();
-            ServiceLocator.Instance.RegisterService(leaderboardService);
+           
             playFabLogin.onLoginComplete += OnLoginComplete;
             playFabLogin.TryLogin(SystemInfo.deviceUniqueIdentifier);
             ServiceLocator.Instance.GetService<ISoundManager>().PlayMusic(MusicType.MainMenuMusic);
@@ -49,7 +47,6 @@ namespace _Project.Scripts.Core
 
         private void OnDestroy()
         {
-            leaderboardService.Dispose();
             displayNameHandler.Dispose();
             playFabLogin.onLoginComplete -= OnLoginComplete;
         //    currencyService.Dispose();
