@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 22de63735f084e39850f99a2cd4fa5d8, type: 3}
   m_Name: SaveNameEvent
-  m_EditorClassIdentifier: Assembly-CSharp:_Project.Scripts.SOAP.Events:StringEvent
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.SOAP.Events.StringEvent

@@ -2,6 +2,7 @@
 using _Project.Scripts.Auth;
 using _Project.Scripts.Core;
 using _Project.Scripts.Grid;
+using _Project.Scripts.PlayfabServices;
 using _Project.Scripts.Score;
 using _Project.Scripts.SOAP.Events;
 using _Project.Scripts.UINodeGraph.Runtime;
@@ -30,6 +31,8 @@ namespace _Project.Scripts.GameOver
         {
             tetrominoGenerator.Stop();
             UINavigationManager.Instance.NavigateTo("9e392b27-fe0f-476a-975f-a5c2983282d9");
+            ServiceLocator.Instance.GetService<ICurrencyService>().AddCurrency("SC", 1);
+            
             ServiceLocator.Instance.GetService<ILeaderboardService>().GetPlayerLeaderboardPoints("Leaderboard",
                 maxPoints =>
                 {
@@ -39,6 +42,7 @@ namespace _Project.Scripts.GameOver
                         ServiceLocator.Instance.GetService<ILeaderboardService>()
                             .UpdatePlayerStatics("Leaderboard", score);
                         gameOverResultEvent.Raise(new GameOverData(){isNewRecord = true, score = score});
+                        ServiceLocator.Instance.GetService<ICurrencyService>().AddCurrency("SC", 20);
                     }
                     else
                     {

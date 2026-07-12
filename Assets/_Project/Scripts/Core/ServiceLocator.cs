@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using NUnit.Framework;
+
 
 namespace _Project.Scripts.Core
 {
@@ -18,15 +18,13 @@ namespace _Project.Scripts.Core
         public void RegisterService<T>(T service)
         {
             var type = typeof(T);
-            Assert.IsFalse(services.ContainsKey(type), 
-                $"Service {type} already registered");
+           
             services.Add(type, service);
         }
         public void UnregisterService<T>()
         {
             var type = typeof(T);
-            Assert.IsTrue(services.ContainsKey(type),
-                $"Service {type} is not registered");
+            
 
             services.Remove(type);
         }

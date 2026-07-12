@@ -13,6 +13,7 @@ namespace _Project.Scripts.Auth
         void UpdatePlayerStatics(string leaderboardName, int score);
         void GetPlayerLeaderboardPoints(string leaderboardName, Action<int> onResult);
         void SetModel(LeaderboardModel leaderboardModel);
+        void Dispose();
     }
 
     public class PlayFabLeaderboardService : ILeaderboardService, IDisposable

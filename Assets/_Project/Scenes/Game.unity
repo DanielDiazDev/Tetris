@@ -1286,13 +1286,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db6ebd993c434c3a82a49996e8c1eb60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Project.Scripts.Input.SwipeDirection
-  minimumDistance: 0.2
-  maximumTime: 1
-  directionThreshold: 0.9
+  minimumDistance: 0.3
   swipeEvent: {fileID: 11400000, guid: 15d5552dbe874ef4f837ba3afabfe9a0, type: 2}
   softDroppedEvent: {fileID: 11400000, guid: f42e6169db5563744b4af25efc519cfe, type: 2}
   rotationEvent: {fileID: 11400000, guid: c822774dc1350324b8641c5b9e2c9a25, type: 2}
   moveCooldown: 0.1
+  tapThreshold: 0.2
 --- !u!1 &1027558662
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,7 +1441,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Project.Scripts.Pieces.TetrominoGenerator
   tetrominoPrefabs:
+  - {fileID: 5447161407484716078, guid: 9381de7a2c4c58e47b3bc09a68372efd, type: 3}
+  - {fileID: 5447161407484716078, guid: af6562904b880d347a086fa9067e55ec, type: 3}
+  - {fileID: 5447161407484716078, guid: ac24288a9d97bed48a653e1b3c6bae35, type: 3}
   - {fileID: 5447161407484716078, guid: e96cb91847585904f8fa5099cbc4aa79, type: 3}
+  - {fileID: 5447161407484716078, guid: 8a4d8b53459eeb14480dc3df7fe8f000, type: 3}
+  - {fileID: 5447161407484716078, guid: 13d4b3e30b0f0fa4ea6f884a15996696, type: 3}
+  - {fileID: 5447161407484716078, guid: cca4fa766f0f27b418fc18acd93d21b7, type: 3}
   nextSpriteEvent: {fileID: 11400000, guid: c1a2540a138e729478c3be6e7341bd2a, type: 2}
   tetrominoLockedEvent: {fileID: 11400000, guid: dc8f5b0813be36045a5f7448afef3e2c, type: 2}
 --- !u!1 &1058526916

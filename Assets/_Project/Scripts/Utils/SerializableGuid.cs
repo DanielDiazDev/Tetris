@@ -73,4 +73,6 @@ namespace _Project.Scripts.Utils
         public static bool operator ==(SerializableGuid left, SerializableGuid right) => left.Equals(right);
         public static bool operator !=(SerializableGuid left, SerializableGuid right) => !(left == right); 
     }
+
+    
 }

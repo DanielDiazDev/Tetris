@@ -1,4 +1,5 @@
-﻿using _Project.Scripts.Auth;
+﻿using System;
+using _Project.Scripts.Auth;
 using _Project.Scripts.GameOver;
 using _Project.Scripts.Grid;
 using _Project.Scripts.Score;
@@ -31,6 +32,7 @@ namespace _Project.Scripts.Core
            leaderboardService = new PlayFabLeaderboardService();
            ServiceLocator.Instance.RegisterService(leaderboardService);
            tetrominoGenerator.Init(gridSystem);
+           
         }
     }
 }

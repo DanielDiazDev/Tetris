@@ -11,6 +11,7 @@ namespace _Project.Scripts.Auth
     public interface IDisplayNameHandler
     {
         void ActivateNamePanel(Action onComplete);
+        void Dispose();
     }
 
     public class DisplayNameHandler : IDisplayNameHandler, IDisposable

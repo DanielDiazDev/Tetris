@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.UINodeGraph.Runtime.UIFlowAsset
   initialNodeGuid: 75eb1021-8fb0-4425-9f24-f40611679025
   nodes:
-  - rid: 872592258644574208
-  - rid: 872592258644574209
-  - rid: 872592258644574210
+  - rid: 872592489965682697
+  - rid: 872592489965682698
+  - rid: 872592489965682699
+  - rid: 872592489965682700
+  - rid: 872592489965682701
   edges:
   - baseNodeGuid: 75eb1021-8fb0-4425-9f24-f40611679025
     portName: PlayButton
@@ -28,10 +30,42 @@ MonoBehaviour:
     targetNodeGuid: 75eb1021-8fb0-4425-9f24-f40611679025
     transition:
       rid: 872592258644574211
+  - baseNodeGuid: 2a7e6042-f04a-4f2c-bfd3-6a5afa0c2033
+    portName: SaveButton
+    targetNodeGuid: 75eb1021-8fb0-4425-9f24-f40611679025
+    transition:
+      rid: 872592470527967306
+  - baseNodeGuid: 75eb1021-8fb0-4425-9f24-f40611679025
+    portName: OptionButton
+    targetNodeGuid: 2a7e6042-f04a-4f2c-bfd3-6a5afa0c2033
+    transition:
+      rid: 872592489965682692
+  - baseNodeGuid: 75eb1021-8fb0-4425-9f24-f40611679025
+    portName: LeaderboardButton
+    targetNodeGuid: 8690df12-81ab-48aa-9746-166a01364bc0
+    transition:
+      rid: 872592489965682702
+  - baseNodeGuid: 8690df12-81ab-48aa-9746-166a01364bc0
+    portName: CloseButton
+    targetNodeGuid: 75eb1021-8fb0-4425-9f24-f40611679025
+    transition:
+      rid: 872592489965682703
   references:
     version: 2
     RefIds:
-    - rid: 872592258644574208
+    - rid: 872592258644574211
+      type: {class: FadeTransition, ns: _Project.Scripts.UINodeGraph.Runtime.Transitions, asm: Assembly-CSharp}
+      data:
+        duration: 0.3
+    - rid: 872592470527967306
+      type: {class: FadeTransition, ns: _Project.Scripts.UINodeGraph.Runtime.Transitions, asm: Assembly-CSharp}
+      data:
+        duration: 0.3
+    - rid: 872592489965682692
+      type: {class: FadeTransition, ns: _Project.Scripts.UINodeGraph.Runtime.Transitions, asm: Assembly-CSharp}
+      data:
+        duration: 0.3
+    - rid: 872592489965682697
       type: {class: PanelNodeData, ns: _Project.Scripts.UINodeGraph.Runtime.Nodes, asm: Assembly-CSharp}
       data:
         guid: 75eb1021-8fb0-4425-9f24-f40611679025
@@ -41,13 +75,13 @@ MonoBehaviour:
         useOverrideBack: 0
         autoDelay: 2
         closeIfLastOnBackInput: 0
-    - rid: 872592258644574209
+    - rid: 872592489965682698
       type: {class: SceneNodeData, ns: _Project.Scripts.UINodeGraph.Runtime.Nodes, asm: Assembly-CSharp}
       data:
         guid: 63466456-96cf-47c0-9d83-e3ef19f04572
         position: {x: 496, y: 147.2}
         sceneName: Game
-    - rid: 872592258644574210
+    - rid: 872592489965682699
       type: {class: PanelNodeData, ns: _Project.Scripts.UINodeGraph.Runtime.Nodes, asm: Assembly-CSharp}
       data:
         guid: 0a2a516d-dd4a-4e50-8069-8e2ecc2ffa59
@@ -57,7 +91,31 @@ MonoBehaviour:
         useOverrideBack: 0
         autoDelay: 2
         closeIfLastOnBackInput: 0
-    - rid: 872592258644574211
+    - rid: 872592489965682700
+      type: {class: PanelNodeData, ns: _Project.Scripts.UINodeGraph.Runtime.Nodes, asm: Assembly-CSharp}
+      data:
+        guid: 2a7e6042-f04a-4f2c-bfd3-6a5afa0c2033
+        position: {x: 434.40002, y: 509.59998}
+        panelPrefab: {fileID: 5671480452411426443, guid: 846707bcca914f149956515440849a26, type: 3}
+        useAutoTransition: 0
+        useOverrideBack: 0
+        autoDelay: 2
+        closeIfLastOnBackInput: 0
+    - rid: 872592489965682701
+      type: {class: PanelNodeData, ns: _Project.Scripts.UINodeGraph.Runtime.Nodes, asm: Assembly-CSharp}
+      data:
+        guid: 8690df12-81ab-48aa-9746-166a01364bc0
+        position: {x: 552.8, y: 288}
+        panelPrefab: {fileID: 4452731244273577260, guid: 96bbf1030a147094e9ce5f948e0e452a, type: 3}
+        useAutoTransition: 0
+        useOverrideBack: 0
+        autoDelay: 2
+        closeIfLastOnBackInput: 0
+    - rid: 872592489965682702
+      type: {class: FadeTransition, ns: _Project.Scripts.UINodeGraph.Runtime.Transitions, asm: Assembly-CSharp}
+      data:
+        duration: 0.3
+    - rid: 872592489965682703
       type: {class: FadeTransition, ns: _Project.Scripts.UINodeGraph.Runtime.Transitions, asm: Assembly-CSharp}
       data:
         duration: 0.3

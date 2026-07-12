@@ -12,7 +12,6 @@ namespace _Project.Scripts.Auth
         public event Action onLoginComplete;
         private IUserInitializer userInitializer;
         private IDisplayNameHandler displayNameHandler;
-
         public PlayFabLogin(IUserInitializer userInitializer, IDisplayNameHandler displayNameHandler)
         {
             this.userInitializer = userInitializer;
@@ -41,6 +40,7 @@ namespace _Project.Scripts.Auth
 
         private void OnLoginSuccess(LoginResult result)
         {
+                onLoginComplete?.Invoke();
             PlayFabClientAPI.GetUserData(new GetUserDataRequest()
             {
                 Keys = new List<string>(){"IsInitialized"}
@@ -57,7 +57,6 @@ namespace _Project.Scripts.Auth
         {
             if (!dataResult.Data.ContainsKey("IsInitialized"))
             {
-                //onLoginComplete?.Invoke();
                 displayNameHandler.ActivateNamePanel(userInitializer.InitializeUser);
                 //ActivateNamePanel(InitializeUser);
             }

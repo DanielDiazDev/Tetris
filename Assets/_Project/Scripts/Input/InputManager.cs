@@ -19,7 +19,6 @@ namespace Project.Scripts.Input
         private InputAction primaryContactInput;
         private InputAction primaryPosition;
         private InputAction touchInput;
-    
         private void OnEnable()
         {
             
@@ -30,11 +29,7 @@ namespace Project.Scripts.Input
             touchInput.started += StartTouch;
         }
 
-        private void StartTouch(InputAction.CallbackContext ctx)
-        {
-            OnTouch?.Invoke();
-        }
-
+       
 
         private void OnDisable()
         {
@@ -61,7 +56,11 @@ namespace Project.Scripts.Input
             primaryPosition = playerInput.actions["PrimaryPosition"];
             touchInput = playerInput.actions["Touch"];
         }
-        
+         private void StartTouch(InputAction.CallbackContext ctx)
+        {
+            OnTouch?.Invoke();
+        }
+
         private void TouchHeldPrimary(InputAction.CallbackContext ctx)
         {
             if(!isTouching) return;
