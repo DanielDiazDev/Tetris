@@ -1191,5 +1191,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.UI.Username
   nameInputField: {fileID: 6744096454805655828}
-  saveNameEvent: {fileID: 11400000, guid: ba5a0ed418c487842b8fc40cc105cb84, type: 2}
+  saveNameEvent: {fileID: 11400000, guid: 76c33314b931d6e44b3eb57f81f55770, type: 2}
   saveButton: {fileID: 6536156849858703181}

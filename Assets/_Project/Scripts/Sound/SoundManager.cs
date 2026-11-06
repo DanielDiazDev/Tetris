@@ -12,6 +12,7 @@ namespace _Project.Scripts.Sound
         void PlaySfx(SfxType sfxType);
         void ToggleMusic(bool state);
         void ToggleSfx(bool state);
+        void Init();
     }
     public enum MusicType
     {
@@ -46,7 +47,7 @@ namespace _Project.Scripts.Sound
         [SerializeField] private List<SFXData> sfxClips;
         private bool musicOn = true;
         private bool sfxOn = true;
-        private void Start()
+        public void Init()
         {
             musicAudioDict = musicClips.ToDictionary(mc => mc.type, mc => mc.clip);
             sfxAudioDict = sfxClips.ToDictionary(sfx => sfx.type, sfx => sfx.clip);

@@ -26,7 +26,8 @@ namespace _Project.Scripts.Core
             playFabLogin = new PlayFabLogin(userInitializer, displayNameHandler);
            
             playFabLogin.onLoginComplete += OnLoginComplete;
-            playFabLogin.TryLogin(SystemInfo.deviceUniqueIdentifier);
+            playFabLogin.TryLogin(SystemInfo.deviceUniqueIdentifier)
+            ServiceLocator.Instance.GetService<ISoundManager>().Init();
             ServiceLocator.Instance.GetService<ISoundManager>().PlayMusic(MusicType.MainMenuMusic);
         }
 
