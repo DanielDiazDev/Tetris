@@ -18,7 +18,7 @@ namespace _Project.Scripts.Core
         private ITitleDataService titleDataService;
         private void Awake()
         {
-            var currencyService = ServiceLocator.Instance.GetService<ICurrencyService>();
+            var currencyService = ServiceLocator2.Instance.GetService<ICurrencyService>();
             titleDataService = new PlayFabTitleDataService();
             userDataService = new PlayFabUserDataService();
             userInitializer = new UserInitializer(titleDataService,currencyService , userDataService);
@@ -26,14 +26,14 @@ namespace _Project.Scripts.Core
             playFabLogin = new PlayFabLogin(userInitializer, displayNameHandler);
            
             playFabLogin.onLoginComplete += OnLoginComplete;
-            playFabLogin.TryLogin(SystemInfo.deviceUniqueIdentifier)
-            ServiceLocator.Instance.GetService<ISoundManager>().Init();
-            ServiceLocator.Instance.GetService<ISoundManager>().PlayMusic(MusicType.MainMenuMusic);
+            playFabLogin.TryLogin(SystemInfo.deviceUniqueIdentifier);
+            ServiceLocator2.Instance.GetService<ISoundManager>().Init();
+            ServiceLocator2.Instance.GetService<ISoundManager>().PlayMusic(MusicType.MainMenuMusic);
         }
 
         private void OnLoginComplete()
         {
-            var currencyService = ServiceLocator.Instance.GetService<ICurrencyService>();
+            var currencyService = ServiceLocator2.Instance.GetService<ICurrencyService>();
             currencyService.CurrencyModel.Init();
             
         }
@@ -42,7 +42,7 @@ namespace _Project.Scripts.Core
         {
             if (Keyboard.current.fKey.wasPressedThisFrame)
             {
-                ServiceLocator.Instance.GetService<ICurrencyService>().AddCurrency("SC", 80, result => {});
+                ServiceLocator2.Instance.GetService<ICurrencyService>().AddCurrency("SC", 80, result => {});
             }
         }
 

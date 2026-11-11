@@ -4,14 +4,14 @@ using System.Collections.Generic;
 
 namespace _Project.Scripts.Core
 {
-    public class ServiceLocator
+    public class ServiceLocator2
     {
-        private static ServiceLocator instance;
-        public static ServiceLocator Instance => instance ??= new ServiceLocator();
+        private static ServiceLocator2 instance;
+        public static ServiceLocator2 Instance => instance ??= new ServiceLocator2();
 
         private readonly Dictionary<Type, object> services;
         
-        private ServiceLocator()
+        private ServiceLocator2()
         {
             services = new Dictionary<Type, object>();
         }

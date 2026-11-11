@@ -41,7 +41,7 @@ namespace _Project.Scripts.UI
             finalScoreText.text = $"Final Score: {gameOverData.score}";
             recordText.gameObject.SetActive(gameOverData.isNewRecord);
 
-            var currencyService = ServiceLocator.Instance.GetService<ICurrencyService>();
+            var currencyService = ServiceLocator2.Instance.GetService<ICurrencyService>();
             currencyService.GetBalance("SC", balance =>
             {
                 resetButton.gameObject.SetActive(balance >= resetCost);
@@ -53,7 +53,7 @@ namespace _Project.Scripts.UI
             PlayerPrefs.SetInt("SavedScore", finalScore);
             PlayerPrefs.SetInt("SavedLevel", finalLevel);
 
-            ServiceLocator.Instance.GetService<ICurrencyService>().SubtractCurrency("SC", resetCost, _ =>
+            ServiceLocator2.Instance.GetService<ICurrencyService>().SubtractCurrency("SC", resetCost, _ =>
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             });

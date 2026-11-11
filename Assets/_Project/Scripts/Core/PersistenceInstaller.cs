@@ -15,17 +15,17 @@ namespace _Project.Scripts.Core
         private void Awake()
         {
             DontDestroyOnLoad(gameObject);
-            ServiceLocator.Instance.RegisterService<ISoundManager>(soundManager);
+            ServiceLocator2.Instance.RegisterService<ISoundManager>(soundManager);
             currencyService = new PlayFabCurrencyService();
-            ServiceLocator.Instance.RegisterService(currencyService);
+            ServiceLocator2.Instance.RegisterService(currencyService);
             leaderboardService = new PlayFabLeaderboardService();
-            ServiceLocator.Instance.RegisterService(leaderboardService);
+            ServiceLocator2.Instance.RegisterService(leaderboardService);
             SceneManager.LoadScene("MainMenu");
         }
 
         private void OnDestroy()
         {
-            ServiceLocator.Instance.UnregisterService<ISoundManager>();
+            ServiceLocator2.Instance.UnregisterService<ISoundManager>();
         }
     }
 }

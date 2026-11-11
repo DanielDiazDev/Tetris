@@ -16,7 +16,7 @@ public class LeaderboardView : GeneralView<LeaderboardModel, LeaderboardControll
                controller = new LeaderboardController(this, GetComponent<LeaderboardModel>());
             }
             base.Initialize();
-           ServiceLocator.Instance.GetService<ILeaderboardService>().GetLeaderboardEntries(0, 6, "Leaderboard");
+           ServiceLocator2.Instance.GetService<ILeaderboardService>().GetLeaderboardEntries(0, 6, "Leaderboard");
         }
 
          public void SetLeaderboard(List<PlayerLeaderboardEntryData> leaderboardEntriesData)

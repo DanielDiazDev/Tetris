@@ -12,7 +12,7 @@ public class LeaderboardModel : BaseModel
 
     private void Awake()
     {
-        ServiceLocator.Instance.GetService<ILeaderboardService>().SetModel(this);
+        ServiceLocator2.Instance.GetService<ILeaderboardService>().SetModel(this);
     }
 
     public void Add(List<PlayerLeaderboardEntryData> leaderboardEntriesData)

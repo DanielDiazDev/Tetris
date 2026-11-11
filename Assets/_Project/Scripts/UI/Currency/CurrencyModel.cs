@@ -11,13 +11,13 @@ public class CurrencyModel : BaseModel
 
     private void Awake()
     {
-        var currencyService = ServiceLocator.Instance.GetService<ICurrencyService>();
+        var currencyService = ServiceLocator2.Instance.GetService<ICurrencyService>();
         currencyService.SetModel(this);
     }
 
     public void Init()
     {
-        var currencyService = ServiceLocator.Instance.GetService<ICurrencyService>();
+        var currencyService = ServiceLocator2.Instance.GetService<ICurrencyService>();
         currencyService.GetBalance("SC", value =>
         {
             Currency.Value = value;

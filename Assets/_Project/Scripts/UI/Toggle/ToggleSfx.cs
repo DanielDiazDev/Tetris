@@ -8,7 +8,7 @@ namespace _Project.Scripts.UI.Toggle
     {
         public void Toggle(bool value)
         {
-            ServiceLocator.Instance.GetService<ISoundManager>().ToggleSfx(value);
+            ServiceLocator2.Instance.GetService<ISoundManager>().ToggleSfx(value);
         }
     }
 }

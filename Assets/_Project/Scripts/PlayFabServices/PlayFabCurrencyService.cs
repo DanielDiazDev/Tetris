@@ -95,7 +95,7 @@ namespace _Project.Scripts.PlayfabServices
 
         public void Dispose()
         {
-            ServiceLocator.Instance.UnregisterService<ICurrencyService>();
+            ServiceLocator2.Instance.UnregisterService<ICurrencyService>();
         }
     }
     

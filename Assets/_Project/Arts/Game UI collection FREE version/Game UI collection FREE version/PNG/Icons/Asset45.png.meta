@@ -1,0 +1,767 @@
+fileFormatVersion: 2
+guid: 5835e49c4055518468a6ed00886e8bac
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1270642690015214056
+    second: "\xCDcono de engranaje blanco minimalista_0"
+  - first:
+      213: 8582123798033057651
+    second: "\xCDcono de engranaje blanco minimalista_1"
+  - first:
+      213: -995520753487904882
+    second: "\xCDcono de engranaje blanco minimalista_2"
+  - first:
+      213: -2942996306154934190
+    second: "\xCDcono de engranaje blanco minimalista_3"
+  - first:
+      213: -1843169880506072505
+    second: "\xCDcono de engranaje blanco minimalista_4"
+  - first:
+      213: -6623259312105266157
+    second: "\xCDcono de engranaje blanco minimalista_5"
+  - first:
+      213: 6057997836738158538
+    second: "\xCDcono de engranaje blanco minimalista_6"
+  - first:
+      213: 334163944036815930
+    second: "\xCDcono de engranaje blanco minimalista_7"
+  - first:
+      213: -2826199033963636004
+    second: "\xCDcono de engranaje blanco minimalista_8"
+  - first:
+      213: 9073704870925827320
+    second: "\xCDcono de engranaje blanco minimalista_9"
+  - first:
+      213: 7196052771825020052
+    second: "\xCDcono de engranaje blanco minimalista_10"
+  - first:
+      213: 1718806255825965604
+    second: "\xCDcono de engranaje blanco minimalista_11"
+  - first:
+      213: -2293639217166192448
+    second: "\xCDcono de engranaje blanco minimalista_12"
+  - first:
+      213: 2758560227363813826
+    second: "\xCDcono de engranaje blanco minimalista_13"
+  - first:
+      213: -9104148698509618818
+    second: "\xCDcono de engranaje blanco minimalista_14"
+  - first:
+      213: -2450728118663630550
+    second: "\xCDcono de engranaje blanco minimalista_15"
+  - first:
+      213: 8214085443364022488
+    second: "\xCDcono de engranaje blanco minimalista_16"
+  - first:
+      213: -4565176288502124186
+    second: "\xCDcono de engranaje blanco minimalista_17"
+  - first:
+      213: -7887345945440380590
+    second: "\xCDcono de engranaje blanco minimalista_18"
+  - first:
+      213: -1862124138400965231
+    second: "\xCDcono de engranaje blanco minimalista_19"
+  - first:
+      213: -1440112125915026597
+    second: "\xCDcono de engranaje blanco minimalista_20"
+  - first:
+      213: 1372815616347009680
+    second: "\xCDcono de engranaje blanco minimalista_21"
+  - first:
+      213: -220169517524016117
+    second: "\xCDcono de engranaje blanco minimalista_22"
+  - first:
+      213: 2557463365924225900
+    second: "\xCDcono de engranaje blanco minimalista_23"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "\xCDcono de engranaje blanco minimalista_0"
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 55
+        width: 1207
+        height: 1164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8164231a435cd5ee0800000000000000
+      internalID: -1270642690015214056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\xCDcono de engranaje blanco minimalista_1"
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 1164
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 377cf20df14d91770800000000000000
+      internalID: 8582123798033057651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\xCDcono de engranaje blanco minimalista_2"
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 1163
+        width: 37
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8ff2d136233f22f0800000000000000
+      internalID: -995520753487904882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\xCDcono de engranaje blanco minimalista_3"
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 1042
+        width: 28
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2503954c3706827d0800000000000000
+      internalID: -2942996306154934190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\xCDcono de engranaje blanco minimalista_4"
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 1060
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7428cbb52cebb66e0800000000000000
+      internalID: -1843169880506072505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\xCDcono de engranaje blanco minimalista_5"
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 1007
+        width: 60
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 314eaa64fb47514a0800000000000000
+      internalID: -6623259312105266157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\xCDcono de engranaje blanco minimalista_6"
+      rect:
+        serializedVersion: 2
+        x: 1151
+        y: 964
+        width: 86
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acfdcd49fe4521450800000000000000
+      internalID: 6057997836738158538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\xCDcono de engranaje blanco minimalista_7"
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 453
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a34de0d265033a400800000000000000
+      internalID: 334163944036815930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\xCDcono de engranaje blanco minimalista_8"
+      rect:
+        serializedVersion: 2
+        x: 1133
+        y: 328
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cda9b04d3f257c8d0800000000000000
+      internalID: -2826199033963636004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\xCDcono de engranaje blanco minimalista_9"
+      rect:
+        serializedVersion: 2
+        x: 1137
+        y: 326
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fcf34c61864ced70800000000000000
+      internalID: 9073704870925827320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\xCDcono de engranaje blanco minimalista_10"
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 280
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49c6891aed38dd360800000000000000
+      internalID: 7196052771825020052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\xCDcono de engranaje blanco minimalista_11"
+      rect:
+        serializedVersion: 2
+        x: 1172
+        y: 230
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 422d93cde2d6ad710800000000000000
+      internalID: 1718806255825965604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\xCDcono de engranaje blanco minimalista_12"
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 210
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c077e1c84b5b20e0800000000000000
+      internalID: -2293639217166192448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\xCDcono de engranaje blanco minimalista_13"
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 210
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c97a8b49ef584620800000000000000
+      internalID: 2758560227363813826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\xCDcono de engranaje blanco minimalista_14"
+      rect:
+        serializedVersion: 2
+        x: 1143
+        y: 210
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e71dffa9ef097a180800000000000000
+      internalID: -9104148698509618818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\xCDcono de engranaje blanco minimalista_15"
+      rect:
+        serializedVersion: 2
+        x: 1143
+        y: 164
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a213ef5b2c34dfdd0800000000000000
+      internalID: -2450728118663630550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\xCDcono de engranaje blanco minimalista_16"
+      rect:
+        serializedVersion: 2
+        x: 1161
+        y: 194
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d86b6ec03b4ef170800000000000000
+      internalID: 8214085443364022488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\xCDcono de engranaje blanco minimalista_17"
+      rect:
+        serializedVersion: 2
+        x: 1141
+        y: 186
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6617bca5a5c35a0c0800000000000000
+      internalID: -4565176288502124186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\xCDcono de engranaje blanco minimalista_18"
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 156
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 259986dc6a48a8290800000000000000
+      internalID: -7887345945440380590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\xCDcono de engranaje blanco minimalista_19"
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 127
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19d1eea46f76826e0800000000000000
+      internalID: -1862124138400965231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\xCDcono de engranaje blanco minimalista_20"
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 85
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5b2a1ac6a1b30ce0800000000000000
+      internalID: -1440112125915026597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\xCDcono de engranaje blanco minimalista_21"
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 79
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 092f87297883d0310800000000000000
+      internalID: 1372815616347009680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\xCDcono de engranaje blanco minimalista_22"
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 17
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b04ac958dfcc1fcf0800000000000000
+      internalID: -220169517524016117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\xCDcono de engranaje blanco minimalista_23"
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 23
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c630dfb916fed7320800000000000000
+      internalID: 2557463365924225900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      "\xCDcono de engranaje blanco minimalista_0": -1270642690015214056
+      "\xCDcono de engranaje blanco minimalista_1": 8582123798033057651
+      "\xCDcono de engranaje blanco minimalista_10": 7196052771825020052
+      "\xCDcono de engranaje blanco minimalista_11": 1718806255825965604
+      "\xCDcono de engranaje blanco minimalista_12": -2293639217166192448
+      "\xCDcono de engranaje blanco minimalista_13": 2758560227363813826
+      "\xCDcono de engranaje blanco minimalista_14": -9104148698509618818
+      "\xCDcono de engranaje blanco minimalista_15": -2450728118663630550
+      "\xCDcono de engranaje blanco minimalista_16": 8214085443364022488
+      "\xCDcono de engranaje blanco minimalista_17": -4565176288502124186
+      "\xCDcono de engranaje blanco minimalista_18": -7887345945440380590
+      "\xCDcono de engranaje blanco minimalista_19": -1862124138400965231
+      "\xCDcono de engranaje blanco minimalista_2": -995520753487904882
+      "\xCDcono de engranaje blanco minimalista_20": -1440112125915026597
+      "\xCDcono de engranaje blanco minimalista_21": 1372815616347009680
+      "\xCDcono de engranaje blanco minimalista_22": -220169517524016117
+      "\xCDcono de engranaje blanco minimalista_23": 2557463365924225900
+      "\xCDcono de engranaje blanco minimalista_3": -2942996306154934190
+      "\xCDcono de engranaje blanco minimalista_4": -1843169880506072505
+      "\xCDcono de engranaje blanco minimalista_5": -6623259312105266157
+      "\xCDcono de engranaje blanco minimalista_6": 6057997836738158538
+      "\xCDcono de engranaje blanco minimalista_7": 334163944036815930
+      "\xCDcono de engranaje blanco minimalista_8": -2826199033963636004
+      "\xCDcono de engranaje blanco minimalista_9": 9073704870925827320
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
