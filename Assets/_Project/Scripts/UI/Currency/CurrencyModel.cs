@@ -3,6 +3,7 @@ using _Project.Scripts.Core;
 using _Project.Scripts.MVC;
 using _Project.Scripts.PlayfabServices;
 using UniRx;
+using UnityServiceLocator;
 
 public class CurrencyModel : BaseModel
 {
@@ -11,13 +12,13 @@ public class CurrencyModel : BaseModel
 
     private void Awake()
     {
-        var currencyService = ServiceLocator2.Instance.GetService<ICurrencyService>();
+        var currencyService = ServiceLocator.Global.Get<ICurrencyService>();
         currencyService.SetModel(this);
     }
 
     public void Init()
     {
-        var currencyService = ServiceLocator2.Instance.GetService<ICurrencyService>();
+        var currencyService = ServiceLocator.Global.Get<ICurrencyService>();
         currencyService.GetBalance("SC", value =>
         {
             Currency.Value = value;

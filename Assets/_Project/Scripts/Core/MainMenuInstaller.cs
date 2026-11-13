@@ -5,6 +5,7 @@ using _Project.Scripts.SOAP.Events;
 using _Project.Scripts.Sound;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityServiceLocator;
 
 namespace _Project.Scripts.Core
 {
@@ -16,9 +17,20 @@ namespace _Project.Scripts.Core
         private IDisplayNameHandler displayNameHandler;
         private IUserDataService  userDataService;
         private ITitleDataService titleDataService;
+        [SerializeField] private SoundManager soundManager;
+        private ICurrencyService currencyService;
+        private ILeaderboardService leaderboardService;
         private void Awake()
         {
-            var currencyService = ServiceLocator2.Instance.GetService<ICurrencyService>();
+            var serviceLocator = ServiceLocator.Global;
+            
+            serviceLocator.Register<ISoundManager>(soundManager);
+            currencyService = new PlayFabCurrencyService();
+            serviceLocator.Register(currencyService);
+            leaderboardService = new PlayFabLeaderboardService();
+            serviceLocator.Register(leaderboardService);
+            
+            
             titleDataService = new PlayFabTitleDataService();
             userDataService = new PlayFabUserDataService();
             userInitializer = new UserInitializer(titleDataService,currencyService , userDataService);
@@ -27,13 +39,14 @@ namespace _Project.Scripts.Core
            
             playFabLogin.onLoginComplete += OnLoginComplete;
             playFabLogin.TryLogin(SystemInfo.deviceUniqueIdentifier);
-            ServiceLocator2.Instance.GetService<ISoundManager>().Init();
-            ServiceLocator2.Instance.GetService<ISoundManager>().PlayMusic(MusicType.MainMenuMusic);
+            serviceLocator.Get<ISoundManager>().Init();
+            serviceLocator.Get<ISoundManager>().PlayMusic(MusicType.MainMenuMusic);
         }
 
         private void OnLoginComplete()
         {
-            var currencyService = ServiceLocator2.Instance.GetService<ICurrencyService>();
+            var serviceLocator = ServiceLocator.Global;
+            var currencyService = serviceLocator.Get<ICurrencyService>();
             currencyService.CurrencyModel.Init();
             
         }
@@ -42,7 +55,7 @@ namespace _Project.Scripts.Core
         {
             if (Keyboard.current.fKey.wasPressedThisFrame)
             {
-                ServiceLocator2.Instance.GetService<ICurrencyService>().AddCurrency("SC", 80, result => {});
+                ServiceLocator.Global.Get<ICurrencyService>().AddCurrency("SC", 80, result => {});
             }
         }
 

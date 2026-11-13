@@ -4,6 +4,7 @@ using _Project.Scripts.Core;
 using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine;
+using UnityServiceLocator;
 
 namespace _Project.Scripts.PlayfabServices
 {
@@ -95,7 +96,7 @@ namespace _Project.Scripts.PlayfabServices
 
         public void Dispose()
         {
-            ServiceLocator2.Instance.UnregisterService<ICurrencyService>();
+           // ServiceLocator.Global.R<ICurrencyService>();
         }
     }
     

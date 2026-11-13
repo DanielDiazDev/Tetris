@@ -5,6 +5,7 @@ using _Project.Scripts.Core;
 using _Project.Scripts.MVC;
 using UniRx;
 using UnityEngine;
+using UnityServiceLocator;
 
 public class LeaderboardModel : BaseModel
 {
@@ -12,7 +13,7 @@ public class LeaderboardModel : BaseModel
 
     private void Awake()
     {
-        ServiceLocator2.Instance.GetService<ILeaderboardService>().SetModel(this);
+        ServiceLocator.Global.Get<ILeaderboardService>().SetModel(this);
     }
 
     public void Add(List<PlayerLeaderboardEntryData> leaderboardEntriesData)

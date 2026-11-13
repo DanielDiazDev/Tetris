@@ -4,6 +4,7 @@ using _Project.Scripts.Core;
 using _Project.Scripts.MVC;
 using _Project.Scripts.UI;
 using UnityEngine;
+using UnityServiceLocator;
 
 public class LeaderboardView : GeneralView<LeaderboardModel, LeaderboardController>
 {
@@ -16,7 +17,7 @@ public class LeaderboardView : GeneralView<LeaderboardModel, LeaderboardControll
                controller = new LeaderboardController(this, GetComponent<LeaderboardModel>());
             }
             base.Initialize();
-           ServiceLocator2.Instance.GetService<ILeaderboardService>().GetLeaderboardEntries(0, 6, "Leaderboard");
+            ServiceLocator.Global.Get<ILeaderboardService>().GetLeaderboardEntries(0, 6, "Leaderboard");
         }
 
          public void SetLeaderboard(List<PlayerLeaderboardEntryData> leaderboardEntriesData)

@@ -113,7 +113,7 @@ namespace _Project.Scripts.Auth
 
         public void Dispose()
         {
-            ServiceLocator2.Instance.UnregisterService<ILeaderboardService>();
+            //ServiceLocator2.Instance.UnregisterService<ILeaderboardService>();
         }
     }
     public class PlayerLeaderboardEntryData

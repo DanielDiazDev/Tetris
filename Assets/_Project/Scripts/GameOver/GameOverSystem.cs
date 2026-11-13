@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using _Project.Scripts.Auth;
 using _Project.Scripts.Core;
 using _Project.Scripts.Grid;
 using _Project.Scripts.PlayfabServices;
 using _Project.Scripts.Score;
 using _Project.Scripts.SOAP.Events;
-using _Project.Scripts.UINodeGraph.Runtime;
 using Project.Scripts.Pieces;
+using UnityServiceLocator;
 
 namespace _Project.Scripts.GameOver
 {
@@ -32,19 +32,18 @@ namespace _Project.Scripts.GameOver
         private void HandleGameOver()
         {
             tetrominoGenerator.Stop();
-            UINavigationManager.Instance.NavigateTo("9e392b27-fe0f-476a-975f-a5c2983282d9");
-            ServiceLocator2.Instance.GetService<ICurrencyService>().AddCurrency("SC", 1);
+            ServiceLocator.Global.Get<ICurrencyService>().AddCurrency("SC", 1);
             
-            ServiceLocator2.Instance.GetService<ILeaderboardService>().GetPlayerLeaderboardPoints("Leaderboard",
+            ServiceLocator.Global.Get<ILeaderboardService>().GetPlayerLeaderboardPoints("Leaderboard",
                 maxPoints =>
                 {
                     var score  = scoreSystem.GetScore();
                     if (score > maxPoints)
                     {
-                        ServiceLocator2.Instance.GetService<ILeaderboardService>()
+                        ServiceLocator.Global.Get<ILeaderboardService>()
                             .UpdatePlayerStatics("Leaderboard", score);
                         gameOverResultEvent.Raise(new GameOverData(){isNewRecord = true, score = score, level = levelSystem.Level});
-                        ServiceLocator2.Instance.GetService<ICurrencyService>().AddCurrency("SC", 20);
+                        ServiceLocator.Global.Get<ICurrencyService>().AddCurrency("SC", 20);
                     }
                     else
                     {

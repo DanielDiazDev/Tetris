@@ -1,6 +1,7 @@
 ﻿using _Project.Scripts.Core;
 using _Project.Scripts.Sound;
 using UnityEngine;
+using UnityServiceLocator;
 
 namespace _Project.Scripts.UI.Toggle
 {
@@ -8,7 +9,7 @@ namespace _Project.Scripts.UI.Toggle
     {
         public void Toggle(bool value)
         {
-            ServiceLocator2.Instance.GetService<ISoundManager>().ToggleSfx(value);
+            ServiceLocator.Global.Get<ISoundManager>().ToggleSfx(value);
         }
     }
 }
