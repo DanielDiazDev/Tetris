@@ -24,11 +24,11 @@ namespace _Project.Scripts.Core
         {
             var serviceLocator = ServiceLocator.Global;
             
-            serviceLocator.Register<ISoundManager>(soundManager);
-            currencyService = new PlayFabCurrencyService();
-            serviceLocator.Register(currencyService);
-            leaderboardService = new PlayFabLeaderboardService();
-            serviceLocator.Register(leaderboardService);
+            // serviceLocator.Register<ISoundManager>(soundManager);
+            // currencyService = new PlayFabCurrencyService();
+            // serviceLocator.Register(currencyService);
+            // leaderboardService = new PlayFabLeaderboardService();
+            // serviceLocator.Register(leaderboardService);
             
             
             titleDataService = new PlayFabTitleDataService();

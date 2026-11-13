@@ -3,6 +3,7 @@ using _Project.Scripts.PlayfabServices;
 using _Project.Scripts.Sound;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityServiceLocator;
 
 namespace _Project.Scripts.Core
 {
@@ -12,21 +13,19 @@ namespace _Project.Scripts.Core
         private ICurrencyService currencyService;
         private ILeaderboardService leaderboardService;
 
-        // private void Awake()
-        // {
-        //     
-        //     DontDestroyOnLoad(gameObject);
-        //     ServiceLocator2.Instance.RegisterService<ISoundManager>(soundManager);
-        //     currencyService = new PlayFabCurrencyService();
-        //     ServiceLocator2.Instance.RegisterService(currencyService);
-        //     leaderboardService = new PlayFabLeaderboardService();
-        //     ServiceLocator2.Instance.RegisterService(leaderboardService);
-        //     SceneManager.LoadScene("MainMenu");
-        // }
-        //
-        // private void OnDestroy()
-        // {
-        //     ServiceLocator2.Instance.UnregisterService<ISoundManager>();
-        // }
+        private void Awake()
+        {
+            
+            var serviceLocator = ServiceLocator.Global;
+            
+            serviceLocator.Register<ISoundManager>(soundManager);
+            currencyService = new PlayFabCurrencyService();
+            serviceLocator.Register(currencyService);
+            leaderboardService = new PlayFabLeaderboardService();
+            serviceLocator.Register(leaderboardService);
+            SceneManager.LoadScene("MainMenu");
+        }
+        
+        
     }
 }
