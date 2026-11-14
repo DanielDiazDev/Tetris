@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using _Project.Scripts.Auth;
-using _Project.Scripts.Core;
 using _Project.Scripts.MVC;
+using _Project.Scripts.PlayFab;
+using _Project.Scripts.PlayFab.Interfaces;
 using _Project.Scripts.UI;
 using UnityEngine;
 using UnityServiceLocator;

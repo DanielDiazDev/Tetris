@@ -48,5 +48,15 @@ namespace UnityServiceLocator {
             
             return this;
         }
+      
+        public bool Unregister<T>() where T : class {
+            Type type = typeof(T);
+            return services.Remove(type);
+        }
+
+       
+        public bool Unregister(Type type) {
+            return services.Remove(type);
+        }
     }
 }

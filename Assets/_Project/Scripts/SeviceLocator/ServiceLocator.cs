@@ -127,6 +127,24 @@ namespace UnityServiceLocator {
             
             throw new ArgumentException($"ServiceLocator.Get: Service of type {typeof(T).FullName} not registered");
         }
+        
+        /// <summary>
+        /// Unregisters a service of type T from this ServiceLocator.
+        /// </summary>
+        /// <typeparam name="T">Class type of the service to unregister.</typeparam>
+        /// <returns>True if the service was found and removed, false otherwise.</returns>
+        public bool Unregister<T>() where T : class {
+            return services.Unregister<T>();
+        }
+        
+        /// <summary>
+        /// Unregisters a service by its type from this ServiceLocator.
+        /// </summary>
+        /// <param name="type">The type of the service to unregister.</param>
+        /// <returns>True if the service was found and removed, false otherwise.</returns>
+        public bool Unregister(Type type) {
+            return services.Unregister(type);
+        }
 
         /// <summary>
         /// Allows retrieval of a service of a specific type. An error is thrown if the required service does not exist.

@@ -32,6 +32,7 @@ namespace Project.Scripts.Pieces
         }
         public void UpdateGhost(GameObject tetromino)
         {
+            if(ghostTetromino == null) return;
             ghostTetromino.transform.position = tetromino.transform.position;
             ghostTetromino.transform.rotation = tetromino.transform.rotation;
         

@@ -1,7 +1,5 @@
 ﻿using System;
-using _Project.Scripts.Auth;
-using _Project.Scripts.Core;
-using _Project.Scripts.PlayfabServices;
+using _Project.Scripts.PlayFab.Interfaces;
 using _Project.Scripts.SOAP.Events;
 using TMPro;
 using UnityEngine;

@@ -1,0 +1,16 @@
+{
+    "name": "UINodeGraph",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f2acee6677ee38e40855302ac6ba8a96"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

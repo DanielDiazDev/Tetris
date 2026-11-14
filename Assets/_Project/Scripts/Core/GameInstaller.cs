@@ -1,13 +1,14 @@
 ﻿using System;
-using _Project.Scripts.Auth;
 using _Project.Scripts.GameOver;
 using _Project.Scripts.Grid;
+using _Project.Scripts.PlayFab.Interfaces;
 using _Project.Scripts.Prefs;
 using _Project.Scripts.Score;
 using _Project.Scripts.SOAP.Events;
 using _Project.Scripts.UINodeGraph.Runtime;
 using Project.Scripts.Pieces;
 using UnityEngine;
+using UnityServiceLocator;
 
 namespace _Project.Scripts.Core
 {
@@ -45,6 +46,11 @@ namespace _Project.Scripts.Core
 
            tetrominoGenerator.Init(gridSystem);
            
+        }
+
+        private void OnDestroy()
+        {
+            
         }
     }
 }

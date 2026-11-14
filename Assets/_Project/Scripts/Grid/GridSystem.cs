@@ -40,7 +40,7 @@ namespace _Project.Scripts.Grid
                 int y = gridChildPosition.y;
                 
                 grid[x, y] = child;
-                Debug.Log($"{x},{y} ");
+                //Debug.Log($"{x},{y} ");
                 // if (y >= 16) 
                 // {
                 //     OnGameOver?.Invoke();

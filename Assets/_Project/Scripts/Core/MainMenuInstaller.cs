@@ -1,6 +1,6 @@
 ﻿using System;
-using _Project.Scripts.Auth;
-using _Project.Scripts.PlayfabServices;
+using _Project.Scripts.PlayFab;
+using _Project.Scripts.PlayFab.Interfaces;
 using _Project.Scripts.SOAP.Events;
 using _Project.Scripts.Sound;
 using UnityEngine;
@@ -12,7 +12,7 @@ namespace _Project.Scripts.Core
     public class MainMenuInstaller : MonoBehaviour
     {
         [SerializeField] private StringEvent saveNameEvent;
-        private PlayFabLogin playFabLogin;
+        private ILogin playFabLogin;
         private IUserInitializer userInitializer;
         private IDisplayNameHandler displayNameHandler;
         private IUserDataService  userDataService;
@@ -20,17 +20,11 @@ namespace _Project.Scripts.Core
         [SerializeField] private SoundManager soundManager;
         private ICurrencyService currencyService;
         private ILeaderboardService leaderboardService;
+        
         private void Awake()
         {
             var serviceLocator = ServiceLocator.Global;
-            
-            // serviceLocator.Register<ISoundManager>(soundManager);
-            // currencyService = new PlayFabCurrencyService();
-            // serviceLocator.Register(currencyService);
-            // leaderboardService = new PlayFabLeaderboardService();
-            // serviceLocator.Register(leaderboardService);
-            
-            
+             currencyService = serviceLocator.Get<ICurrencyService>();
             titleDataService = new PlayFabTitleDataService();
             userDataService = new PlayFabUserDataService();
             userInitializer = new UserInitializer(titleDataService,currencyService , userDataService);
@@ -38,7 +32,8 @@ namespace _Project.Scripts.Core
             playFabLogin = new PlayFabLogin(userInitializer, displayNameHandler);
            
             playFabLogin.onLoginComplete += OnLoginComplete;
-            playFabLogin.TryLogin(SystemInfo.deviceUniqueIdentifier);
+            playFabLogin.TryLogin("Test1124");//SystemInfo.deviceUniqueIdentifier
+            serviceLocator.Register(playFabLogin);
             serviceLocator.Get<ISoundManager>().Init();
             serviceLocator.Get<ISoundManager>().PlayMusic(MusicType.MainMenuMusic);
         }
@@ -46,7 +41,7 @@ namespace _Project.Scripts.Core
         private void OnLoginComplete()
         {
             var serviceLocator = ServiceLocator.Global;
-            var currencyService = serviceLocator.Get<ICurrencyService>();
+             currencyService = serviceLocator.Get<ICurrencyService>();
             currencyService.CurrencyModel.Init();
             
         }
@@ -63,7 +58,6 @@ namespace _Project.Scripts.Core
         {
             displayNameHandler.Dispose();
             playFabLogin.onLoginComplete -= OnLoginComplete;
-        //    currencyService.Dispose();
             
         }
     }

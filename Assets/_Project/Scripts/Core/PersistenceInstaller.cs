@@ -1,5 +1,5 @@
-﻿using _Project.Scripts.Auth;
-using _Project.Scripts.PlayfabServices;
+﻿using _Project.Scripts.PlayFab;
+using _Project.Scripts.PlayFab.Interfaces;
 using _Project.Scripts.Sound;
 using UnityEngine;
 using UnityEngine.SceneManagement;

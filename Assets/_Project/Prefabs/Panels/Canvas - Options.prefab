@@ -1758,7 +1758,6 @@ GameObject:
   - component: {fileID: 834294190782868664}
   - component: {fileID: 2426961868806166541}
   - component: {fileID: 2464232267874513891}
-  - component: {fileID: 8841605173341400001}
   m_Layer: 0
   m_Name: Sfx
   m_TagString: Untagged
@@ -1825,21 +1824,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8841605173341400001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7063216186553170452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a24f9d4ec2ad45b891a30ec1b082aed6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controlsMusic: 0
-  handle: {fileID: 0}
-  trackImage: {fileID: 0}
 --- !u!1 &7213629608818247957
 GameObject:
   m_ObjectHideFlags: 0
@@ -2421,7 +2405,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6695238681641546722
 RectTransform:
   m_ObjectHideFlags: 0

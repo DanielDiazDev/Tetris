@@ -1,11 +1,10 @@
 using System;
-using _Project.Scripts.Core;
 using _Project.Scripts.MVC;
-using _Project.Scripts.PlayfabServices;
+using _Project.Scripts.PlayFab.Interfaces;
 using UniRx;
 using UnityServiceLocator;
 
-public class CurrencyModel : BaseModel
+public class CurrencyModel : BaseModel, ICurrencyModel
 {
     // Add your data properties here
     public ReactiveProperty<int> Currency { get; } =  new ReactiveProperty<int>();
@@ -14,10 +13,12 @@ public class CurrencyModel : BaseModel
     {
         var currencyService = ServiceLocator.Global.Get<ICurrencyService>();
         currencyService.SetModel(this);
+        Init();
     }
 
     public void Init()
     {
+        if(!ServiceLocator.Global.Get<ILogin>().IsInitialized) return;
         var currencyService = ServiceLocator.Global.Get<ICurrencyService>();
         currencyService.GetBalance("SC", value =>
         {
