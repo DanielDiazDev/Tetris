@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-Assets-Shared
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Localization-Assets-Shared
+  m_GUID: 1394ad3834766ad49ba0d22bd4a3664d
+  m_SerializeEntries:
+  - m_GUID: 57a62311dd3313d45a767c739ee2248c
+    m_Address: Assets/_Project/Localization/Tables/Leaderboard Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 69298437986bc9149a3ebd53f461d62d
+    m_Address: Assets/_Project/Localization/Tables/Gameover Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6cd48e916c631d34b8623daa8c364a27
+    m_Address: Assets/_Project/Localization/Tables/Options Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 775a8c966bbf40d4ea9691287325b318
+    m_Address: Assets/_Project/Localization/Tables/Menu Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ca2c367867b000d4a8a3a549402ef3ab
+    m_Address: Assets/_Project/Localization/Tables/Login Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: a69cf6991915e7c40960a7b6f03264fe, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: edd9096631cfdc34fbf89c0a4596b8ad, type: 2}
+    - {fileID: 11400000, guid: 28c92f2cf3a2dbf489d80f886fb0cdcf, type: 2}
+    - {fileID: 11400000, guid: 66e3cd8139237c24d8d517b2d4da50e9, type: 2}

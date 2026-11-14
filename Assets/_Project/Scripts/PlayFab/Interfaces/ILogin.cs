@@ -7,5 +7,6 @@ namespace _Project.Scripts.PlayFab.Interfaces
         event Action onLoginComplete;
         void TryLogin(string deviceId);
         bool IsInitialized { get; }
+        void DeleteAccount(Action onSuccess = null, Action<string> onError = null);
     }
 }

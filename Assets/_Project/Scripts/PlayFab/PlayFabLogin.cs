@@ -69,6 +69,17 @@ namespace _Project.Scripts.PlayFab
         {
             Debug.LogError(error.GenerateErrorReport());
         }
+
+        public void DeleteAccount(Action onSuccess = null, Action<string> onError = null)
+        {
+            var request = new ExecuteCloudScriptRequest()
+            {
+                FunctionName = "DeleteAccount",
+            };
+            PlayFabClientAPI.ExecuteCloudScript(request,
+                result => onSuccess?.Invoke(),
+                error => onError?.Invoke(error.GenerateErrorReport()));
+        }
        
 
     }
