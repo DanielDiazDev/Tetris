@@ -2,9 +2,12 @@
     "name": "EditorAssembly",
     "rootNamespace": "",
     "references": [
-        "GUID:db409864a5f6fe842a0e77c19c014f6d"
+        "GUID:db409864a5f6fe842a0e77c19c014f6d",
+        "GUID:1f3608285f8607e4cb8b03c5bbaab7ca"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

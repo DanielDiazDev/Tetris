@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿#if UNITY_EDITOR
+
+using System.Collections.Generic;
 using System.Linq;
 using _Project.Scripts.UINodeGraph.Runtime.Nodes;
 using UnityEditor.Experimental.GraphView;
@@ -226,3 +228,4 @@ namespace _Project.Scripts.UINodeGraph.Editor.Views
         }
     }
 }
+#endif

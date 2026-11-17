@@ -32,7 +32,7 @@ namespace _Project.Scripts.Core
             playFabLogin = new PlayFabLogin(userInitializer, displayNameHandler);
            
             playFabLogin.onLoginComplete += OnLoginComplete;
-            playFabLogin.TryLogin("Test1124");//SystemInfo.deviceUniqueIdentifier
+            playFabLogin.TryLogin(SystemInfo.deviceUniqueIdentifier);
             serviceLocator.Register(playFabLogin);
             serviceLocator.Get<ISoundManager>().Init();
             serviceLocator.Get<ISoundManager>().PlayMusic(MusicType.MainMenuMusic);

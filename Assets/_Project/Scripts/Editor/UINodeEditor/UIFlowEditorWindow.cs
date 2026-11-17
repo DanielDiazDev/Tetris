@@ -1,4 +1,7 @@
-﻿using System;
+﻿#if UNITY_EDITOR
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using _Project.Scripts.UINodeGraph.Editor.Edges;
@@ -6,6 +9,7 @@ using _Project.Scripts.UINodeGraph.Editor.Views;
 using _Project.Scripts.UINodeGraph.Runtime;
 using _Project.Scripts.UINodeGraph.Runtime.Transitions;
 using UnityEditor;
+
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -231,3 +235,4 @@ namespace _Project.Scripts.UINodeGraph.Editor
         }
     }
 }
+#endif

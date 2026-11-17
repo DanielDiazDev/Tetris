@@ -816,7 +816,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6128024025569763097}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2358589469844002567}
+        m_TargetAssemblyTypeName: _Project.Scripts.UI.LanguageSwitcher, UI
+        m_MethodName: SetSpanish
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4864700320390893520
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,7 +1010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20784314, g: 0.84705883, b: 0.9019608, a: 1}
+  m_Color: {r: 0.14901961, g: 0.20392157, b: 0.32941177, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1036,9 +1048,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.20784314, g: 0.84705883, b: 0.9019608, a: 1}
-    m_HighlightedColor: {r: 0.33458823, g: 0.8715294, b: 0.91764706, a: 1}
-    m_PressedColor: {r: 0.17043138, g: 0.69458824, b: 0.7396079, a: 1}
+    m_NormalColor: {r: 0.14901961, g: 0.20392157, b: 0.32941177, a: 1}
+    m_HighlightedColor: {r: 0.2851765, g: 0.33129412, b: 0.4367059, a: 1}
+    m_PressedColor: {r: 0.122196086, g: 0.16721569, b: 0.27011764, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -1058,7 +1070,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 109082935632345317}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2358589469844002567}
+        m_TargetAssemblyTypeName: _Project.Scripts.UI.LanguageSwitcher, UI
+        m_MethodName: SetEnglish
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5407094562635110516
 GameObject:
   m_ObjectHideFlags: 0
@@ -1767,7 +1791,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1, y: 0.435}
   m_AnchorMax: {x: 0.66, y: 0.495}
-  m_AnchoredPosition: {x: -0.000030518, y: 0}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6261622979356025038
@@ -2252,6 +2276,7 @@ GameObject:
   - component: {fileID: 4699195209644226879}
   - component: {fileID: 6181008483900989246}
   - component: {fileID: 8467783425935405943}
+  - component: {fileID: 2358589469844002567}
   m_Layer: 0
   m_Name: Language
   m_TagString: Untagged
@@ -2420,6 +2445,23 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &2358589469844002567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7621931601530152401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39e775306c672134f9c6114afbc3dba2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UI::_Project.Scripts.UI.LanguageSwitcher
+  englishLocale: en
+  spanishLocale: es
+  englishButton: {fileID: 8927992429997929228}
+  spanishButton: {fileID: 7914209520952553080}
+  selectedColor: {r: 0, g: 1, b: 1, a: 1}
 --- !u!1 &7910849255979970389
 GameObject:
   m_ObjectHideFlags: 0
